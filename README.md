@@ -2,9 +2,9 @@
 
 ## Group 
 
-Radhika Sinha
-Cristian Astorga
-Benjamin Wilkins
+- Radhika Sinha
+- Cristian Astorga
+- Benjamin Wilkins
 
 ## Tasks
 
