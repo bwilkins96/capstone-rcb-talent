@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static utils.TestUtils.getHtdTalent;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class CompanyJdbcTemplateRepositoryTest {
@@ -37,19 +38,6 @@ class CompanyJdbcTemplateRepositoryTest {
         Company actual = repository.findById(1);
 
         assertEquals(actual, getHtdTalent());
-    }
-
-    private Company getHtdTalent() {
-        return new Company(
-                1,
-                "HTD Talent",
-                "htdtalent@email.com",
-                "1234 Company Ave",
-                "Dallas",
-                "TX",
-                "a-1234",
-                "123-4567"
-        );
     }
 
 }
