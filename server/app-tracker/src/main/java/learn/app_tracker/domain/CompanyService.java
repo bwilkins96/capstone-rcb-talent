@@ -17,10 +17,10 @@ public class CompanyService {
 
     public List<Company> findAll() {
         return repository.findAll();
-    };
+    }
 
     public Company findById(int companyId) {
         return repository.findById(companyId);
-    };
+    }
 
 }

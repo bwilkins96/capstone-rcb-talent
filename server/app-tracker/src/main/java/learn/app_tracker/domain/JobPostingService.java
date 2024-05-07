@@ -21,6 +21,6 @@ public class JobPostingService {
 
     JobPosting findById(int postingId) {
         return repository.findById(postingId);
-    };
+    }
 
 }
