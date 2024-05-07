@@ -100,25 +100,25 @@ delimiter //
 create procedure set_known_good_state()
 begin
 
+    delete from posting_skill;
     delete from skill;
     alter table skill auto_increment = 1;
+	delete from job_posting;
+    alter table job_posting auto_increment = 1;
     delete from company;
 	alter table company auto_increment = 1;
-    delete from job_posting;
-    alter table job_posting auto_increment = 1;
-    delete from posting_skill;
-	delete from `status`;
-    alter table `status` auto_increment = 1;
-	delete from origin;
-    alter table origin auto_increment = 1;
-    delete from application;
-    alter table application auto_increment = 1;
+    delete from interview; 
+    alter table interview auto_increment = 1; 
     delete from interview_type;
     alter table interview_type auto_increment = 1;
     delete from result;
     alter table result auto_increment = 1;
-    delete from interview;
-    alter table interview auto_increment = 1;
+    delete from application;
+    alter table application auto_increment = 1;
+    delete from `status`;
+    alter table `status` auto_increment = 1;
+	delete from origin;
+    alter table origin auto_increment = 1;
 
 	insert into skill(skill_name) values
 		('Git'),
@@ -139,7 +139,21 @@ begin
 		('HTD Talent', 'htdtalent@email.com', '1234 Company Ave', 'Dallas', 'TX', 'a-1234', '123-4567'),
         ('RCB Talent', 'rcbtalent@email.com', '1234 Company Ave', 'Dallas', 'TX', 'a-1234', '123-4567'),
         ('ABC Talent', 'abctalent@email.com', '1234 Company Ave', 'Dallas', 'TX', 'a-1234', '123-4567');
-    
+        
+	insert into job_posting
+		(company_id, `role`, `level`, visa_sponsorship, degree)
+	values
+		(1, 'Software Developer', 'Entry Level', 0, 'Bachelors'),
+        (2, 'Software Developer', 'Senior', 1, 'Masters'),
+        (2, 'Software Developer', 'Mid Level', 0, 'Bachelors');
+        
+	insert into posting_skill 
+		(posting_id, skill_id)
+	values
+		(1, 1), 
+        (1, 2),
+        (1, 3);
+        
 end //
 -- 4. Change the statement terminator back to the original.
 delimiter ;
