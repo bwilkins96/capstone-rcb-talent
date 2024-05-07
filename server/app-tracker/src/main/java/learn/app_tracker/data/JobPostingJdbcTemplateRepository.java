@@ -16,10 +16,13 @@ public class JobPostingJdbcTemplateRepository implements JobPostingRepository {
 
     private static final String FIELDS =
             "posting_id, company_id, `role`, `level`, visa_sponsorship, degree";
-    private final JdbcTemplate jdbcTemplate;
 
-    public JobPostingJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
+    private final JdbcTemplate jdbcTemplate;
+    private final CompanyRepository companyRepository;
+
+    public JobPostingJdbcTemplateRepository(JdbcTemplate jdbcTemplate, CompanyRepository companyRepository) {
         this.jdbcTemplate = jdbcTemplate;
+        this.companyRepository = companyRepository;
     }
 
     @Override
@@ -60,14 +63,9 @@ public class JobPostingJdbcTemplateRepository implements JobPostingRepository {
     }
 
     private void addCompany(JobPosting posting) {
-        String companyFields = "company_id, company_name, company_email, address, city, state, postal_code, company_phone";
-
-        final String sql = "select " + companyFields + " from company where company_id = ?;";
         int companyId = posting.getCompany().getCompanyId();
 
-        Company company = jdbcTemplate.query(sql, new CompanyMapper(), companyId)
-                .stream().findFirst().orElse(null);
-
+        Company company = companyRepository.findById(companyId);
         posting.setCompany(company);
     }
 
