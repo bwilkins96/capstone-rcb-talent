@@ -8,4 +8,6 @@ public interface JobPostingRepository {
 
     List<JobPosting> findAll();
 
+    JobPosting findById(int postingId);
+
 }

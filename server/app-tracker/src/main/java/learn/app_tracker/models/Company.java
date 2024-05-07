@@ -13,6 +13,10 @@ public class Company {
     private String postalCode;
     private String phone;
 
+    public Company() {
+
+    }
+
     public Company(int companyId, String name, String email, String address, String city, String state, String postalCode, String phone) {
         this.companyId = companyId;
         this.name = name;

@@ -1,5 +1,6 @@
 package learn.app_tracker.data.mappers;
 
+import learn.app_tracker.models.Company;
 import learn.app_tracker.models.JobPosting;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -17,6 +18,10 @@ public class JobPostingMapper implements RowMapper<JobPosting> {
         posting.setLevel(resultSet.getString("level"));
         posting.setVisaSponsorship(resultSet.getBoolean("visa_sponsorship"));
         posting.setDegree(resultSet.getString("degree"));
+
+        Company company = new Company();
+        company.setCompanyId(resultSet.getInt("company_id"));
+        posting.setCompany(company);
 
         return posting;
     }
