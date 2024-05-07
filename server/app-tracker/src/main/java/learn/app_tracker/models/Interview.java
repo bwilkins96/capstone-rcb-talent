@@ -9,6 +9,7 @@ import java.util.Objects;
 public class Interview {
 
     private int interviewId;
+    private int applicationId;
     private InterviewType type;
     private Result result;
     private LocalDateTime when;
@@ -18,8 +19,9 @@ public class Interview {
 
     }
 
-    public Interview(int interviewId, InterviewType type, Result result, LocalDateTime when, String notes) {
+    public Interview(int interviewId, int applicationId, InterviewType type, Result result, LocalDateTime when, String notes) {
         this.interviewId = interviewId;
+        this.applicationId = applicationId;
         this.type = type;
         this.result = result;
         this.when = when;
@@ -32,6 +34,14 @@ public class Interview {
 
     public void setInterviewId(int interviewId) {
         this.interviewId = interviewId;
+    }
+
+    public int getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(int applicationId) {
+        this.applicationId = applicationId;
     }
 
     public InterviewType getType() {
@@ -71,12 +81,12 @@ public class Interview {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Interview interview = (Interview) o;
-        return type == interview.type && result == interview.result && Objects.equals(when, interview.when);
+        return interviewId == interview.interviewId && applicationId == interview.applicationId && type == interview.type && result == interview.result && Objects.equals(when, interview.when) && Objects.equals(notes, interview.notes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, result, when);
+        return Objects.hash(interviewId, applicationId, type, result, when, notes);
     }
 
 }
