@@ -132,7 +132,13 @@ begin
         ('Excel');
         
 	-- finish populating with values as needed
-	-- insert into company
+	
+    insert into company
+		(company_name, company_email, address, city, state, postal_code, company_phone)
+	values
+		('HTD Talent', 'htdtalent@email.com', '1234 Company Ave', 'Dallas', 'TX', 'a-1234', '123-4567'),
+        ('RCB Talent', 'rcbtalent@email.com', '1234 Company Ave', 'Dallas', 'TX', 'a-1234', '123-4567'),
+        ('ABC Talent', 'abctalent@email.com', '1234 Company Ave', 'Dallas', 'TX', 'a-1234', '123-4567');
     
 end //
 -- 4. Change the statement terminator back to the original.
