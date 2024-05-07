@@ -19,7 +19,7 @@ public class JobPostingService {
         return repository.findAll();
     }
 
-    JobPosting findById(int postingId) {
+    public JobPosting findById(int postingId) {
         return repository.findById(postingId);
     }
 
