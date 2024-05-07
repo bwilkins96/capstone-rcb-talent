@@ -1,5 +1,6 @@
 package learn.app_tracker.models;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class JobPosting {
@@ -10,18 +11,20 @@ public class JobPosting {
     private String level;
     private boolean visaSponsorship;
     private String degree;
+    private ArrayList<String> skills;
 
     public JobPosting() {
 
     }
 
-    public JobPosting(int postingId, Company company, String role, String level, boolean visaSponsorship, String degree) {
+    public JobPosting(int postingId, Company company, String role, String level, boolean visaSponsorship, String degree, ArrayList<String> skills) {
         this.postingId = postingId;
         this.company = company;
         this.role = role;
         this.level = level;
         this.visaSponsorship = visaSponsorship;
         this.degree = degree;
+        this.skills = skills;
     }
 
     public int getPostingId() {
@@ -70,6 +73,26 @@ public class JobPosting {
 
     public void setDegree(String degree) {
         this.degree = degree;
+    }
+
+    public ArrayList<String> getSkills() {
+        return new ArrayList<>(skills);
+    }
+
+    public void setSkills(ArrayList<String> skills) {
+        this.skills = skills;
+    }
+
+    public boolean addSkill(String skill) {
+        return skills.add(skill);
+    }
+
+    public boolean removeSkill(String skill) {
+        return skills.remove(skill);
+    }
+
+    public String removeSkill(int idx) {
+        return skills.remove(idx);
     }
 
     @Override
