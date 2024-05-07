@@ -1,4 +1,4 @@
-package learn.app_tracker.models;
+package learn.app_tracker.models.enums;
 
 public enum Result {
 
