@@ -25,4 +25,12 @@ public class CompanyJdbcTemplateRepository implements CompanyRepository {
         return jdbcTemplate.query(sql, new CompanyMapper());
     }
 
+    @Override
+    public Company findById(int companyId) {
+        final String sql = "select " + FIELDS + " from company where company_id = ?;";
+
+        return jdbcTemplate.query(sql, new CompanyMapper(), companyId)
+                .stream().findFirst().orElse(null);
+    }
+
 }
