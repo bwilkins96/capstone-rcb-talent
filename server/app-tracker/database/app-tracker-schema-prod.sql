@@ -1,6 +1,6 @@
-drop database if exists app_tracker;
-create database app_tracker;
-use app_tracker;
+drop database if exists application_tracker;
+create database application_tracker;
+use application_tracker;
 
 create table skill (
     skill_id int primary key auto_increment,

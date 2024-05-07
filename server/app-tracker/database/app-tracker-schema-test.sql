@@ -1,6 +1,6 @@
-drop database if exists app_tracker_test;
-create database app_tracker_test;
-use app_tracker_test;
+drop database if exists application_tracker_test;
+create database application_tracker_test;
+use application_tracker_test;
 
 -- create tables and relationships
 create table skill (
