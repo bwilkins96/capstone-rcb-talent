@@ -100,6 +100,18 @@ delimiter //
 create procedure set_known_good_state()
 begin
 
+	delete from interview; 
+    alter table interview auto_increment = 1; 
+    delete from interview_type;
+    alter table interview_type auto_increment = 1;
+    delete from result;
+    alter table result auto_increment = 1;
+	delete from application;
+    alter table application auto_increment = 1;
+    delete from `status`;
+    alter table `status` auto_increment = 1;
+	delete from origin;
+    alter table origin auto_increment = 1;
     delete from posting_skill;
     alter table posting_skill auto_increment = 1;
     delete from skill;
@@ -108,18 +120,6 @@ begin
     alter table job_posting auto_increment = 1;
     delete from company;
 	alter table company auto_increment = 1;
-    delete from interview; 
-    alter table interview auto_increment = 1; 
-    delete from interview_type;
-    alter table interview_type auto_increment = 1;
-    delete from result;
-    alter table result auto_increment = 1;
-    delete from application;
-    alter table application auto_increment = 1;
-    delete from `status`;
-    alter table `status` auto_increment = 1;
-	delete from origin;
-    alter table origin auto_increment = 1;
 
 	insert into skill(skill_name) values
 		('Git'),
