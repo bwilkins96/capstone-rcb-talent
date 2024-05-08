@@ -40,7 +40,7 @@
 
 
 * [x] Create Application repository class (BW) [hours to complete]
-* [x] Test Application repository class (developer) [hours to complete]
+* [ ] Test Application repository class (developer) [hours to complete]
 * [x] Create/test Interview repository class (CA) [hours to complete]
 * [x] Create/test Company repository class (BW) [hours to complete]
 * [x] Create/test Job Posting repository class (BW) [hours to complete]
