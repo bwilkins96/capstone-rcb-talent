@@ -31,7 +31,41 @@ class InterviewServiceTest {
 
     @Test
     void shouldNotAddInvalid() throws DataException {
+        // Null interview
+        Result<Interview> result = service.add(null);
+        assertEquals(ResultType.INVALID, result.getType());
 
+        // Application ID is not provided
+        Interview interview = makeInterview();
+        interview.setInterviewId(0);
+        interview.setApplicationId(0);
+        result = service.add(interview);
+        assertEquals(ResultType.INVALID, result.getType());
+
+        // Application does not exist
+        interview.setApplicationId(1);
+        when(jobApplicationRepository.findById(1)).thenReturn(null);
+        result = service.add(interview);
+        assertEquals(ResultType.INVALID, result.getType());
+
+        // Interview type is null
+        JobApplication app = new JobApplication();
+        when(jobApplicationRepository.findById(1)).thenReturn(app);
+        interview.setType(null);
+        result = service.add(interview);
+        assertEquals(ResultType.INVALID, result.getType());
+
+        // Interview Result is null
+        interview.setType(InterviewType.TECHNICAL);
+        interview.setResult(null);
+        result = service.add(interview);
+        assertEquals(ResultType.INVALID, result.getType());
+
+        // Interview ID is set
+        interview.setResult(InterviewResult.FAIL);
+        interview.setInterviewId(1);
+        result = service.add(interview);
+        assertEquals(ResultType.INVALID, result.getType());
     }
 
     @Test
@@ -51,13 +85,55 @@ class InterviewServiceTest {
     }
 
     @Test
-    void shouldNotUpdateInvalid() {
+    void shouldNotUpdateInvalid() throws DataException {
+        // Null interview
+        Result<Interview> result = service.update(null);
+        assertEquals(ResultType.INVALID, result.getType());
 
+        // Application ID is not provided
+        Interview interview = makeInterview();
+        interview.setApplicationId(0);
+        result = service.update(interview);
+        assertEquals(ResultType.INVALID, result.getType());
+
+        // Application does not exist
+        interview.setApplicationId(1);
+        when(jobApplicationRepository.findById(1)).thenReturn(null);
+        result = service.update(interview);
+        assertEquals(ResultType.INVALID, result.getType());
+
+        // Interview type is null
+        JobApplication app = new JobApplication();
+        when(jobApplicationRepository.findById(1)).thenReturn(app);
+        interview.setType(null);
+        result = service.update(interview);
+        assertEquals(ResultType.INVALID, result.getType());
+
+        // Interview Result is null
+        interview.setType(InterviewType.TECHNICAL);
+        interview.setResult(null);
+        result = service.update(interview);
+        assertEquals(ResultType.INVALID, result.getType());
+
+        // Interview ID is not set
+        interview.setResult(InterviewResult.FAIL);
+        interview.setInterviewId(0);
+        result = service.update(interview);
+        assertEquals(ResultType.INVALID, result.getType());
     }
 
     @Test
-    void shouldUpdateValid() {
+    void shouldUpdateValid() throws DataException {
+        JobApplication application = new JobApplication();
+        when(jobApplicationRepository.findById(1)).thenReturn(application);
 
+        Interview interview = makeInterview();
+        interview.setResult(InterviewResult.PASS);
+
+        when(repository.update(interview)).thenReturn(true);
+        Result<Interview> result = service.update(interview);
+
+        assertEquals(ResultType.SUCCESS, result.getType());
     }
 
     @Test
@@ -74,6 +150,7 @@ class InterviewServiceTest {
 
     private Interview makeInterview() {
         Interview interview = new Interview();
+        interview.setInterviewId(1);
         interview.setApplicationId(1);
         interview.setType(InterviewType.TECHNICAL);
         interview.setResult(InterviewResult.FAIL);
