@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000"})
-@RequestMapping("/api/job-posting")
+@RequestMapping("/api/job/posting")
 public class JobPostingController {
 
     private final JobPostingService service;
