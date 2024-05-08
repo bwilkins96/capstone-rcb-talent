@@ -24,27 +24,75 @@ public class JobApplicationService {
     }
 
     public Result<JobApplication> add(JobApplication application) {
-        return null;
+        Result<JobApplication> result = validate(application);
+
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        return result;
     }
 
     public Result<JobApplication> update(JobApplication application) {
-        // application id is required and must be greater than 0
+        Result<JobApplication> result = validateUpdate(application);
 
-        return null;
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        return result;
     }
 
     public boolean deleteById(int applicationId) {
         return repository.deleteById(applicationId);
     }
 
-    private Result<JobApplication> validate() {
+    private Result<JobApplication> validateUpdate(JobApplication application) {
+        Result<JobApplication> result = validate(application);
+
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        // application id is required and must be greater than 0
+        if (application.getApplicationId() <= 0) {
+            result.addMessage("application id is required and must be greater than 0", ResultType.INVALID);
+        }
+
+        return result;
+    }
+
+    private Result<JobApplication> validate(JobApplication application) {
         // application cannot be null
-        // posting id is required
+        // posting id is required and must be greater than 0
         // status cannot be null,
         // origin cannot be null,
         // date applied cannot be null
 
-        return null;
+        Result<JobApplication> result = new Result<>();
+
+        if (application == null) {
+            result.addMessage("application cannot be null", ResultType.INVALID);
+            return result;
+        }
+
+        if (application.getPosting() == null || application.getPosting().getPostingId() <= 0) {
+            result.addMessage("posting id is required and must be greater than 0", ResultType.INVALID);
+        }
+
+        if (application.getStatus() == null) {
+            result.addMessage("status cannot be null", ResultType.INVALID);
+        }
+
+        if (application.getOrigin() == null) {
+            result.addMessage("origin cannot be null", ResultType.INVALID);
+        }
+
+        if (application.getDateApplied() == null) {
+            result.addMessage("date applied cannot be null", ResultType.INVALID);
+        }
+
+        return result;
     }
 
 }
