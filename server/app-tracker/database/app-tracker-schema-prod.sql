@@ -96,3 +96,64 @@ create table interview(
 );
 -- data (to be added)
 
+insert into skill(skill_name) values
+		('Git'),
+        ('Java'),
+        ('Spring Boot'),
+        ('React'),
+        ('SQL'),
+        ('Docker'),
+        ('C++'),
+        ('Haskell'),
+        ('Excel');
+	
+    insert into company
+		(company_name, company_email, address, city, state, postal_code, company_phone)
+	values
+		('HTD Talent', 'htdtalent@email.com', '1234 Company Ave', 'Dallas', 'TX', 'a-1234', '123-4567'),
+        ('RCB Talent', 'rcbtalent@email.com', '1234 Company Ave', 'Dallas', 'TX', 'a-1234', '123-4567'),
+        ('ABC Talent', 'abctalent@email.com', '1234 Company Ave', 'Dallas', 'TX', 'a-1234', '123-4567');
+        
+	insert into job_posting
+		(company_id, `role`, `level`, visa_sponsorship, degree)
+	values
+		(1, 'Software Developer', 'Entry Level', 0, 'Bachelors'),
+        (2, 'Software Developer', 'Senior', 1, 'Masters'),
+        (2, 'Software Developer', 'Mid Level', 0, 'Bachelors');
+        
+	insert into posting_skill 
+		(posting_id, skill_id)
+	values
+		(1, 1), 
+        (1, 2),
+        (1, 3),
+        (2, 1);
+        
+	insert into status(status_name) values
+		('Offer'),
+        ('Rejection'),
+        ('Pending'),
+        ('No Response'),
+        ('Withdrawn');
+        
+	insert into origin(origin_name) values
+		('Cold Apply'),
+        ('Referal'),
+        ('Career Fair');
+        
+	insert into application(posting_id, status_id, origin_id, date_applied, notes) values
+		(1, 1, 1, '2024-01-20', '');
+    
+    insert into result(`name`) values
+		('Undetermined'),
+        ('Pass'),
+        ('Fail');
+        
+	insert into interview_type(`type`) values
+		('Behavioral'),
+        ('Technical');
+        
+	insert into interview(application_id, type_id, result_id, `when`, note)
+		values
+        (1, 1, 2, '2024-02-22 03:14:07', 'Good feelings');
+

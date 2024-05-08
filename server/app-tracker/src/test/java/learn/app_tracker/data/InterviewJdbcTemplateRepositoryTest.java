@@ -90,6 +90,9 @@ class InterviewJdbcTemplateRepositoryTest {
         interview.setInterviewId(3);
 
         assertTrue(repository.update(interview));
+
+        Interview updated = repository.findById(3);
+        assertEquals(updated, interview);
     }
 
     @Test
