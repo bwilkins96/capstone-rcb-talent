@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -28,8 +29,10 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
         iv.setApplicationId((rs.getInt("application_id")));
         iv.setType(InterviewType.findByValue(rs.getInt("type_id")));
         iv.setResult(Result.findByValue(rs.getInt("result_id")));
-        Timestamp timestamp = new Timestamp(rs.getDate("when").getTime());
+
+        Timestamp timestamp = Timestamp.valueOf(rs.getString("when"));
         iv.setWhen(timestamp.toLocalDateTime());
+
         iv.setNotes(rs.getString("note"));
         return iv;
     };
@@ -70,7 +73,7 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
             statement.setInt(1, interview.getApplicationId());
             statement.setInt(2, interview.getType().getValue());
             statement.setInt(3, interview.getResult().getValue());
-            statement.setDate(4, Date.valueOf(interview.getWhen().toLocalDate()));
+            statement.setTimestamp(4, Timestamp.valueOf(interview.getWhen()));
             statement.setString(5, interview.getNotes());
             return statement;
         }, keyHolder);
