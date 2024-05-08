@@ -55,7 +55,7 @@
 
 #### Controller Layer
 
-* [ ] Create Application controller (developer) [hours to complete]
+* [x] Create Application controller (RS) [hours to complete]
 * [x] Create Interview controller (CA) [hours to complete]
 * [x] Create Company controller (BW) [hours to complete]
 * [x] Create Job Posting controller (BW) [hours to complete]
@@ -66,10 +66,10 @@
       
 ### Client
 
-* [ ] Set up routing in App.js (developer) [hours to complete]
-* [ ] Create navbar component (developer) [hours to complete]
-* [ ] Create home page (developer) [hours to complete]
-* [ ] Create visualizations page (developer) [hours to complete]
+* [ ] Set up routing in App.js (RS) [hours to complete]
+* [ ] Create navbar component (RS) [hours to complete]
+* [ ] Create home page (RS) [hours to complete]
+* [ ] Create visualizations page (RS) [hours to complete]
 * [ ] Create applications overview page (developer) [hours to complete]
 * [ ] Create applications/id page (developer) [hours to complete]
 * [ ] Create applications form (developer) [hours to complete]
