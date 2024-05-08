@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,7 +61,13 @@ class InterviewJdbcTemplateRepositoryTest {
         assertEquals(2, interview.getApplicationId());
         assertEquals(InterviewType.BEHAVIORAL.getTypeId(), interview.getType().getTypeId());
         assertEquals(InterviewResult.PASS.getResultId(), interview.getResult().getResultId());
+        // Convert to system time to pass tests. (Since the expected time is time set within MySQL's default timezone: UTC
         LocalDateTime expected = LocalDateTime.of(2024, 2, 22, 3, 14, 7);
+        ZonedDateTime curTZDateTime = ZonedDateTime.of(expected, ZoneId.of("UTC"))
+                .toOffsetDateTime()
+                .atZoneSameInstant(ZoneId.systemDefault());
+        expected = curTZDateTime.toLocalDateTime();
+
         assertEquals(expected, interview.getWhen());
         assertEquals("OK feelings", interview.getNotes());
     }
