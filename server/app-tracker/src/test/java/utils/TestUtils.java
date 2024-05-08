@@ -62,7 +62,7 @@ public class TestUtils {
         application.setNotes("I wonder what will happen");
 
         JobPosting posting = new JobPosting();
-        posting.setPostingId(3);
+        posting.setPostingId(1);
         application.setPosting(posting);
 
         return application;

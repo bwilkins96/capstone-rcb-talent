@@ -61,7 +61,7 @@ class JobApplicationJdbcTemplateRepositoryTest {
 
     @Test
     void shouldUpdate() {
-        JobApplication toUpdate = getTestApplication();
+        JobApplication toUpdate = getTestApplicationFull();
 
         toUpdate.setApplicationId(5);
         toUpdate.setDateApplied(LocalDate.of(2024, 4, 4));

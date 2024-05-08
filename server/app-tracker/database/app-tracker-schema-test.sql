@@ -165,7 +165,7 @@ begin
 	insert into application(posting_id, status_id, origin_id, date_applied, notes) values
 		(1, 1, 1, '2024-01-20', ''), -- unchanged
 		(2, 1, 1, '2024-01-20', ''), -- unchanged
-        (3, 1, 1, '2024-01-20', 'I wonder what will happen'), -- unchanged
+        (1, 1, 1, '2024-01-20', 'I wonder what will happen'), -- unchanged
         (3, 1, 1, '2024-01-20', ''), -- deleted
         (3, 1, 1, '2024-01-20', ''); -- updated
     
