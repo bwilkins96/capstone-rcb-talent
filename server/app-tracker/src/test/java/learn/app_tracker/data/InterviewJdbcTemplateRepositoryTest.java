@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -58,8 +57,8 @@ class InterviewJdbcTemplateRepositoryTest {
         assertNotNull(interview);
 
         assertEquals(2, interview.getApplicationId());
-        assertEquals(InterviewType.BEHAVIORAL.getValue(), interview.getType().getValue());
-        assertEquals(Result.PASS.getValue(), interview.getResult().getValue());
+        assertEquals(InterviewType.BEHAVIORAL.getTypeId(), interview.getType().getTypeId());
+        assertEquals(Result.PASS.getResultId(), interview.getResult().getResultId());
         LocalDateTime expected = LocalDateTime.of(2024, 2, 22, 3, 14, 7);
         assertEquals(expected, interview.getWhen());
         assertEquals("OK feelings", interview.getNotes());

@@ -5,23 +5,23 @@ public enum InterviewType {
     BEHAVIORAL(1),
     TECHNICAL(2);
 
-    private final int value;
+    private final int typeId;
 
-    InterviewType(int value) {
-        this.value = value;
+    InterviewType(int typeId) {
+        this.typeId = typeId;
     }
 
-    public int getValue() {
-        return value;
+    public int getTypeId() {
+        return typeId;
     }
 
-    public static InterviewType findByValue(int value) {
+    public static InterviewType findById(int typeId) {
         for (InterviewType type : InterviewType.values()) {
-            if (type.value == value) {
+            if (type.typeId == typeId) {
                 return type;
             }
         }
-        String message = String.format("No InterviewType with value: %s", value);
+        String message = String.format("No InterviewType with value: %s", typeId);
         throw new RuntimeException(message);
     }
 }

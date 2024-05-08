@@ -2,10 +2,7 @@ package learn.app_tracker.data;
 
 import learn.app_tracker.data.mappers.InterviewMapper;
 import learn.app_tracker.models.Interview;
-import learn.app_tracker.models.enums.InterviewType;
-import learn.app_tracker.models.enums.Result;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -14,7 +11,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -59,8 +55,8 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, interview.getApplicationId());
-            statement.setInt(2, interview.getType().getValue());
-            statement.setInt(3, interview.getResult().getValue());
+            statement.setInt(2, interview.getType().getTypeId());
+            statement.setInt(3, interview.getResult().getResultId());
             statement.setTimestamp(4, Timestamp.valueOf(interview.getWhen()));
             statement.setString(5, interview.getNotes());
             return statement;
@@ -87,8 +83,8 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
 
         int rowsUpdated = jdbcTemplate.update(sql,
                 interview.getApplicationId(),
-                interview.getType().getValue(),
-                interview.getResult().getValue(),
+                interview.getType().getTypeId(),
+                interview.getResult().getResultId(),
                 Date.valueOf(interview.getWhen().toLocalDate()),
                 interview.getNotes(),
                 interview.getInterviewId());
