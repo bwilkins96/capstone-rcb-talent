@@ -59,6 +59,7 @@
 * [x] Create Interview controller (CA) [hours to complete]
 * [x] Create Company controller (BW) [hours to complete]
 * [x] Create Job Posting controller (BW) [hours to complete]
+* [x] Create Global Exception Handler (RS) [hours to complete]
 
 #### Other
 
