@@ -11,7 +11,7 @@ public class Interview {
     private int interviewId;
     private int applicationId;
     private InterviewType type;
-    private InterviewResult interviewResult;
+    private InterviewResult result;
     private LocalDateTime when;
     private String notes;
 
@@ -19,11 +19,11 @@ public class Interview {
 
     }
 
-    public Interview(int interviewId, int applicationId, InterviewType type, InterviewResult interviewResult, LocalDateTime when, String notes) {
+    public Interview(int interviewId, int applicationId, InterviewType type, InterviewResult result, LocalDateTime when, String notes) {
         this.interviewId = interviewId;
         this.applicationId = applicationId;
         this.type = type;
-        this.interviewResult = interviewResult;
+        this.result = result;
         this.when = when;
         this.notes = notes;
     }
@@ -53,11 +53,11 @@ public class Interview {
     }
 
     public InterviewResult getResult() {
-        return interviewResult;
+        return result;
     }
 
-    public void setResult(InterviewResult interviewResult) {
-        this.interviewResult = interviewResult;
+    public void setResult(InterviewResult result) {
+        this.result = result;
     }
 
     public LocalDateTime getWhen() {
@@ -81,12 +81,12 @@ public class Interview {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Interview interview = (Interview) o;
-        return interviewId == interview.interviewId && applicationId == interview.applicationId && type == interview.type && interviewResult == interview.interviewResult && Objects.equals(when, interview.when) && Objects.equals(notes, interview.notes);
+        return interviewId == interview.interviewId && applicationId == interview.applicationId && type == interview.type && result == interview.result && Objects.equals(when, interview.when) && Objects.equals(notes, interview.notes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(interviewId, applicationId, type, interviewResult, when, notes);
+        return Objects.hash(interviewId, applicationId, type, result, when, notes);
     }
 
 }
