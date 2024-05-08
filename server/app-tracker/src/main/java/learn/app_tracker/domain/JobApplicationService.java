@@ -30,6 +30,9 @@ public class JobApplicationService {
             return result;
         }
 
+        application = repository.add(application);
+        result.setPayload(application);
+
         return result;
     }
 
@@ -38,6 +41,13 @@ public class JobApplicationService {
 
         if (!result.isSuccess()) {
             return result;
+        }
+
+        if (repository.update(application)) {
+            result.setPayload(application);
+        } else {
+            String message = String.format("Application id %s not found", application.getApplicationId());
+            result.addMessage(message, ResultType.NOT_FOUND);
         }
 
         return result;
