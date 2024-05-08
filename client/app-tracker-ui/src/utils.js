@@ -4,3 +4,7 @@ export function getOption(selectEle) {
     
     return options[idx].value;
 }
+
+export function getTodayString() {
+    return new Date().toISOString().substring(0, 10);
+}

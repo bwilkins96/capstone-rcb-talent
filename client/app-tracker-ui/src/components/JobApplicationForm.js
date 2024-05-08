@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-import { getOption } from '../utils';
+import { getOption, getTodayString } from '../utils';
 
 const JobApplicationDefault = {
     applicationId: 0,
@@ -10,7 +10,7 @@ const JobApplicationDefault = {
     },
     status: "PENDING",
     origin: "COLD_APPLY",
-    dateApplied: "",
+    dateApplied: getTodayString(),
     notes: ""
 };
 
@@ -51,7 +51,6 @@ function JobApplicationForm() {
         const newApplication = { ...application };
 
         if (event.target.type === 'select-one') {
-            console.log(event.target.type);
             const selected = getOption(event.target);
             newApplication[event.target.name] = selected;
         } else {
@@ -59,7 +58,6 @@ function JobApplicationForm() {
         }
         
         setApplication(newApplication);
-        console.log(application);
     }
 
     const addOrEdit = () => {
@@ -76,6 +74,21 @@ function JobApplicationForm() {
                     <label htmlFor='status' className='form-label'>Status</label>
 
                     <select 
+                    id='status' 
+                    name='status' 
+                    value={application.status}
+                    onChange={handleChange}>
+                        <option value='PENDING'>Pending</option>
+                        <option value='OFFER'>Offer</option>
+                        <option value='REJECTION'>Rejection</option>
+                        <option value='NO_RESPONSE'>No Response</option>
+                        <option value='WITHDRAWN'>Withdrawn</option>
+                    </select>
+                </fieldset>
+                <fieldset className='mb-4'>
+                    <label htmlFor='origin' className='form-label'>Origin</label>
+
+                    <select 
                     id='origin' 
                     name='origin' 
                     value={application.origin}
@@ -84,6 +97,18 @@ function JobApplicationForm() {
                         <option value='REFERRAL'>Referral</option>
                         <option value='CAREER_FAIR'>Career Fair</option>
                     </select>
+                </fieldset>
+                <fieldset className='mb-4'>
+                    <label htmlFor='dateApplied' className='form-label'>Date Applied</label>
+                    
+                    <input 
+                    type='date'
+                    className='form-control'
+                    id='dateApplied'
+                    name='dateApplied'
+                    value={application.dateApplied}
+                    onChange={handleChange}
+                    ></input>
                 </fieldset>
 
                 <div>
