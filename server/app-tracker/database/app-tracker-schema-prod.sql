@@ -130,9 +130,9 @@ insert into skill(skill_name) values
         (2, 1);
         
 	insert into status(status_name) values
-		('Offer'),
+		('Pending'),
+        ('Offer'),
         ('Rejection'),
-        ('Pending'),
         ('No Response'),
         ('Withdrawn');
         

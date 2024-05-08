@@ -1,4 +1,4 @@
-@url = http://localhost:8080/api/job-posting
+@url = http://localhost:8080/api/job/posting
 
 GET {{url}} HTTP/1.1
 
