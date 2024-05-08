@@ -112,4 +112,17 @@ public class JobApplication {
         return Objects.hash(applicationId, posting, status, origin, dateApplied);
     }
 
+    @Override
+    public String toString() {
+        return "JobApplication{" +
+                "applicationId=" + applicationId +
+                ", posting=" + posting +
+                ", status=" + status +
+                ", origin=" + origin +
+                ", dateApplied=" + dateApplied +
+                ", notes='" + notes + '\'' +
+                ", interviews=" + interviews +
+                '}';
+    }
+
 }

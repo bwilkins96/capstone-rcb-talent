@@ -55,9 +55,10 @@ public class TestUtils {
     public static JobApplication getTestApplication() {
         JobApplication application = new JobApplication();
 
+        application.setApplicationId(3);
         application.setStatus(Status.PENDING);
         application.setOrigin(Origin.COLD_APPLY);
-        application.setDateApplied(LocalDate.of(2023, 1, 20));
+        application.setDateApplied(LocalDate.of(2024, 1, 20));
         application.setNotes("I wonder what will happen");
 
         JobPosting posting = new JobPosting();
@@ -72,8 +73,5 @@ public class TestUtils {
         application.setPosting(getTestPostingFull());
         return application;
     }
-
-    // (posting_id, status_id, origin_id, date_applied, notes)
-    // (3, 1, 1, '2024-01-20', 'I wonder what will happen')
 
 }

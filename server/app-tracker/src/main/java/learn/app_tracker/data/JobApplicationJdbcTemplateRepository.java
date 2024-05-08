@@ -35,7 +35,7 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
     public JobApplication findById(int applicationId) {
         final String sql = "select " + FIELDS + " from application where application_id = ?;";
 
-        return jdbcTemplate.query(sql, new JobApplicationMapper())
+        return jdbcTemplate.query(sql, new JobApplicationMapper(), applicationId)
                 .stream().findFirst().orElse(null);
     }
 
@@ -74,7 +74,8 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
                 "status_id = ?, " +
                 "origin_id = ?, " +
                 "date_applied = ?, " +
-                "notes = ?;";
+                "notes = ?" +
+                "where application_id = ?;";
 
         return jdbcTemplate.update(
                 sql,
@@ -82,7 +83,8 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
                 application.getStatus().getStatusId(),
                 application.getOrigin().getOriginId(),
                 application.getDateApplied().toString(),
-                application.getNotes()
+                application.getNotes(),
+                application.getApplicationId()
         ) > 0;
     }
 
