@@ -15,7 +15,7 @@ public class JobApplication {
     private Origin origin;
     private LocalDate dateApplied;
     private String notes;
-    private ArrayList<Interview> interviews;
+    private ArrayList<Interview> interviews = new ArrayList<>();
 
     public JobApplication() {
 
@@ -110,6 +110,19 @@ public class JobApplication {
     @Override
     public int hashCode() {
         return Objects.hash(applicationId, posting, status, origin, dateApplied);
+    }
+
+    @Override
+    public String toString() {
+        return "JobApplication{" +
+                "applicationId=" + applicationId +
+                ", posting=" + posting +
+                ", status=" + status +
+                ", origin=" + origin +
+                ", dateApplied=" + dateApplied +
+                ", notes='" + notes + '\'' +
+                ", interviews=" + interviews +
+                '}';
     }
 
 }
