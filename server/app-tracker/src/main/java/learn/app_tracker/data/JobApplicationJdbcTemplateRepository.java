@@ -6,12 +6,14 @@ import learn.app_tracker.models.JobApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public class JobApplicationJdbcTemplateRepository implements JobApplicationRepository {
 
     private static final String FIELDS =

@@ -1,7 +1,7 @@
 package learn.app_tracker.models;
 
 import learn.app_tracker.models.enums.InterviewType;
-import learn.app_tracker.models.enums.Result;
+import learn.app_tracker.models.enums.InterviewResult;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -9,8 +9,9 @@ import java.util.Objects;
 public class Interview {
 
     private int interviewId;
+    private int applicationId;
     private InterviewType type;
-    private Result result;
+    private InterviewResult result;
     private LocalDateTime when;
     private String notes;
 
@@ -18,8 +19,9 @@ public class Interview {
 
     }
 
-    public Interview(int interviewId, InterviewType type, Result result, LocalDateTime when, String notes) {
+    public Interview(int interviewId, int applicationId, InterviewType type, InterviewResult result, LocalDateTime when, String notes) {
         this.interviewId = interviewId;
+        this.applicationId = applicationId;
         this.type = type;
         this.result = result;
         this.when = when;
@@ -34,6 +36,14 @@ public class Interview {
         this.interviewId = interviewId;
     }
 
+    public int getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(int applicationId) {
+        this.applicationId = applicationId;
+    }
+
     public InterviewType getType() {
         return type;
     }
@@ -42,11 +52,11 @@ public class Interview {
         this.type = type;
     }
 
-    public Result getResult() {
+    public InterviewResult getResult() {
         return result;
     }
 
-    public void setResult(Result result) {
+    public void setResult(InterviewResult result) {
         this.result = result;
     }
 
@@ -71,12 +81,12 @@ public class Interview {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Interview interview = (Interview) o;
-        return type == interview.type && result == interview.result && Objects.equals(when, interview.when);
+        return interviewId == interview.interviewId && applicationId == interview.applicationId && type == interview.type && result == interview.result && Objects.equals(when, interview.when) && Objects.equals(notes, interview.notes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, result, when);
+        return Objects.hash(interviewId, applicationId, type, result, when, notes);
     }
 
 }
