@@ -19,7 +19,7 @@ Content-Type: application/json
   "applicationId": 1,
   "type": "TECHNICAL",
   "result": "UNDETERMINED",
-  "when": "2024-03-14T15:45:00",
+  "when": "2024-03-14T12:30:00",
   "notes": ""
 }
 
