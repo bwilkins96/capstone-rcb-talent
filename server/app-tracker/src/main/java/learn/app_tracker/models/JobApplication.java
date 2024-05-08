@@ -15,7 +15,7 @@ public class JobApplication {
     private Origin origin;
     private LocalDate dateApplied;
     private String notes;
-    private ArrayList<Interview> interviews;
+    private ArrayList<Interview> interviews = new ArrayList<>();
 
     public JobApplication() {
 

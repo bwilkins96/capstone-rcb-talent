@@ -1,12 +1,15 @@
 package utils;
 
 import learn.app_tracker.models.Company;
+import learn.app_tracker.models.Interview;
 import learn.app_tracker.models.JobApplication;
 import learn.app_tracker.models.JobPosting;
+import learn.app_tracker.models.enums.InterviewType;
 import learn.app_tracker.models.enums.Origin;
 import learn.app_tracker.models.enums.Status;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +58,7 @@ public class TestUtils {
     public static JobApplication getTestApplication() {
         JobApplication application = new JobApplication();
 
-        application.setApplicationId(3);
+        application.setApplicationId(2);
         application.setStatus(Status.PENDING);
         application.setOrigin(Origin.COLD_APPLY);
         application.setDateApplied(LocalDate.of(2024, 1, 20));
@@ -70,8 +73,22 @@ public class TestUtils {
 
     public static JobApplication getTestApplicationFull() {
         JobApplication application = getTestApplication();
+
         application.setPosting(getTestPostingFull());
+        application.addInterview(getTestInterview());
+
         return application;
+    }
+
+    public static Interview getTestInterview() {
+        Interview interview = new Interview();
+
+        interview.setApplicationId(2);
+        interview.setType(InterviewType.BEHAVIORAL);
+        interview.setWhen(LocalDateTime.of(2024, 2, 22, 3, 14, 7));
+        interview.setNotes("OK feelings");
+
+        return interview;
     }
 
 }

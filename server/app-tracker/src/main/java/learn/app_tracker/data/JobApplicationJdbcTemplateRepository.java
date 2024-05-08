@@ -2,6 +2,7 @@ package learn.app_tracker.data;
 
 import learn.app_tracker.data.mappers.CompanyMapper;
 import learn.app_tracker.data.mappers.JobApplicationMapper;
+import learn.app_tracker.models.Interview;
 import learn.app_tracker.models.JobApplication;
 import learn.app_tracker.models.JobPosting;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,10 +25,12 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
 
     private final JdbcTemplate jdbcTemplate;
     private final JobPostingRepository jobPostingRepository;
+    private final InterviewRepository interviewRepository;
 
-    public JobApplicationJdbcTemplateRepository(JdbcTemplate jdbcTemplate, JobPostingRepository jobPostingRepository) {
+    public JobApplicationJdbcTemplateRepository(JdbcTemplate jdbcTemplate, JobPostingRepository jobPostingRepository, InterviewRepository interviewRepository) {
         this.jdbcTemplate = jdbcTemplate;
         this.jobPostingRepository = jobPostingRepository;
+        this.interviewRepository = interviewRepository;
     }
 
     @Override
@@ -43,6 +47,7 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
 
         if (application != null) {
             addPosting(application);
+            addInterviews(application);
         }
 
         return application;
@@ -114,6 +119,16 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
     private JobApplication addPosting(JobApplication application) {
         JobPosting posting = jobPostingRepository.findById(application.getPosting().getPostingId());
         application.setPosting(posting);
+        return application;
+    }
+
+    private JobApplication addInterviews(JobApplication application) {
+        List<Interview> interviews = interviewRepository.findAllByApplicationId(application.getApplicationId());
+
+        if (interviews != null) {
+            application.setInterviews(new ArrayList<>(interviews));
+        }
+
         return application;
     }
 

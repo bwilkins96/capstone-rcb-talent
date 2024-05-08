@@ -31,13 +31,13 @@ class JobApplicationJdbcTemplateRepositoryTest {
     void shouldFindAll() {
         List<JobApplication> result = repository.findAll();
 
-        assertTrue(result.size() >= 4);
+        assertTrue(result.size() >= 3);
         assertTrue(result.contains(getTestApplication()));
     }
 
     @Test
     void shouldFindById() {
-        JobApplication actual = repository.findById(3);
+        JobApplication actual = repository.findById(2);
         assertEquals(getTestApplicationFull(), actual);
     }
 
@@ -53,7 +53,7 @@ class JobApplicationJdbcTemplateRepositoryTest {
         actual.setApplicationId(0);
 
         JobApplication expected = getTestApplication();
-        expected.setApplicationId(6);
+        expected.setApplicationId(5);
 
         actual = repository.add(actual);
         assertEquals(expected, actual);
@@ -63,12 +63,12 @@ class JobApplicationJdbcTemplateRepositoryTest {
     void shouldUpdate() {
         JobApplication toUpdate = getTestApplicationFull();
 
-        toUpdate.setApplicationId(5);
+        toUpdate.setApplicationId(4);
         toUpdate.setDateApplied(LocalDate.of(2024, 4, 4));
         toUpdate.setNotes("updated!");
 
         assertTrue(repository.update(toUpdate));
-        assertEquals(toUpdate, repository.findById(5));
+        assertEquals(toUpdate, repository.findById(4));
     }
 
     @Test
