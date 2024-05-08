@@ -2,14 +2,18 @@ package learn.app_tracker.data;
 
 import learn.app_tracker.data.mappers.CompanyMapper;
 import learn.app_tracker.data.mappers.JobApplicationMapper;
+import learn.app_tracker.models.Interview;
 import learn.app_tracker.models.JobApplication;
+import learn.app_tracker.models.JobPosting;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,10 +22,15 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
 
     private static final String FIELDS =
             "application_id, posting_id, status_id, origin_id, date_applied, notes";
-    private final JdbcTemplate jdbcTemplate;
 
-    public JobApplicationJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
+    private final JdbcTemplate jdbcTemplate;
+    private final JobPostingRepository jobPostingRepository;
+    private final InterviewRepository interviewRepository;
+
+    public JobApplicationJdbcTemplateRepository(JdbcTemplate jdbcTemplate, JobPostingRepository jobPostingRepository, InterviewRepository interviewRepository) {
         this.jdbcTemplate = jdbcTemplate;
+        this.jobPostingRepository = jobPostingRepository;
+        this.interviewRepository = interviewRepository;
     }
 
     @Override
@@ -32,11 +41,16 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
     }
 
     @Override
+    @Transactional
     public JobApplication findById(int applicationId) {
-        final String sql = "select " + FIELDS + " from application where application_id = ?;";
+        JobApplication application = findByIdBase(applicationId);
 
-        return jdbcTemplate.query(sql, new JobApplicationMapper())
-                .stream().findFirst().orElse(null);
+        if (application != null) {
+            addPosting(application);
+            addInterviews(application);
+        }
+
+        return application;
     }
 
     @Override
@@ -74,7 +88,8 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
                 "status_id = ?, " +
                 "origin_id = ?, " +
                 "date_applied = ?, " +
-                "notes = ?;";
+                "notes = ?" +
+                "where application_id = ?;";
 
         return jdbcTemplate.update(
                 sql,
@@ -82,7 +97,8 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
                 application.getStatus().getStatusId(),
                 application.getOrigin().getOriginId(),
                 application.getDateApplied().toString(),
-                application.getNotes()
+                application.getNotes(),
+                application.getApplicationId()
         ) > 0;
     }
 
@@ -91,6 +107,29 @@ public class JobApplicationJdbcTemplateRepository implements JobApplicationRepos
         final String sql = "delete from application where application_id = ?";
 
         return jdbcTemplate.update(sql, applicationId) > 0;
+    }
+
+    private JobApplication findByIdBase(int applicationId) {
+        final String sql = "select " + FIELDS + " from application where application_id = ?;";
+
+        return jdbcTemplate.query(sql, new JobApplicationMapper(), applicationId)
+                .stream().findFirst().orElse(null);
+    }
+
+    private JobApplication addPosting(JobApplication application) {
+        JobPosting posting = jobPostingRepository.findById(application.getPosting().getPostingId());
+        application.setPosting(posting);
+        return application;
+    }
+
+    private JobApplication addInterviews(JobApplication application) {
+        List<Interview> interviews = interviewRepository.findAllByApplicationId(application.getApplicationId());
+
+        if (interviews != null) {
+            application.setInterviews(new ArrayList<>(interviews));
+        }
+
+        return application;
     }
 
 }

@@ -2,9 +2,9 @@ package learn.app_tracker.models.enums;
 
 public enum Status {
 
-    OFFER(1, "Offer"),
-    REJECTION(2, "Rejection"),
-    PENDING(3, "Pending"),
+    PENDING(1, "Pending"),
+    OFFER(2, "Offer"),
+    REJECTION(3, "Rejection"),
     NO_RESPONSE(4, "No Response"),
     WITHDRAWN(5, "Withdrawn");
 
