@@ -17,8 +17,10 @@ const JobApplicationDefault = {
 function JobApplicationForm() {
     const [application, setApplication] = useState(JobApplicationDefault);
     const [errors, setErrors] = useState([]);
+    const [postings, setPostings] = useState([]);
     
     const url = 'http://localhost:8080/api/job/application';
+    const postingUrl = 'http://localhost:8080/api/job/posting';
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -42,6 +44,20 @@ function JobApplicationForm() {
         .catch(console.log);
     }, [id]);
 
+    // fetch posting data
+    useEffect(() => {
+        fetch(postingUrl)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    return Promise.reject(`Unexpected status code: ${response.status}`);
+                }
+            })
+            .then(data => setPostings(data)) // here we are setting our data to our state variable
+            .catch(console.log);
+    }, []);
+
     // helper functions
 
     const getInit = method => {
@@ -56,6 +72,14 @@ function JobApplicationForm() {
 
     const getErrorLi = error => {
         return <li key={error}>{error}</li>;
+    }
+
+    const getPostingOption = posting => {
+        return (
+            <option key={posting.postingId} value={posting.postingId}>
+                {posting.role} - {posting.level}
+            </option>
+        );
     }
 
     const addOrEdit = () => {
@@ -119,12 +143,19 @@ function JobApplicationForm() {
 
         if (event.target.type === 'select-one') {
             const selected = getOption(event.target);
-            newApplication[event.target.name] = selected;
+
+            if (event.target.id === 'posting') {
+                newApplication.posting = { postingId: selected };
+            } else {
+                newApplication[event.target.name] = selected;
+            }
+
         } else {
             newApplication[event.target.name] = event.target.value;
         }
         
         setApplication(newApplication);
+        console.log(newApplication);
     }
 
     return (
@@ -168,6 +199,17 @@ function JobApplicationForm() {
                         <option value='COLD_APPLY'>Cold Apply</option>
                         <option value='REFERRAL'>Referral</option>
                         <option value='CAREER_FAIR'>Career Fair</option>
+                    </select>
+                </fieldset>
+                <fieldset className='mb-4'>
+                    <label htmlFor='posting' className='form-label'>Posting</label>
+
+                    <select 
+                    id='posting' 
+                    name='posting' 
+                    value={application.posting.postingId}
+                    onChange={handleChange}>
+                        { postings.map(p => getPostingOption(p)) }
                     </select>
                 </fieldset>
                 <fieldset className='mb-4'>
