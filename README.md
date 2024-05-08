@@ -2,9 +2,9 @@
 
 ## Group 
 
-- Radhika Sinha
-- Cristian Astorga
-- Benjamin Wilkins
+- Radhika Sinha (RS)
+- Cristian Astorga (CA)
+- Benjamin Wilkins (BW)
 
 ## Tasks
 
@@ -12,51 +12,53 @@
 
 ### Set Up
 
-* [ ] Set up Maven project (developer) [hours to complete]
-* [ ] Set up React project (developer) [hours to complete]
-* [ ] Create production database schema (developer) [hours to complete]
-* [ ] Create test database schema (developer) [hours to complete]
+* [x] Set up Maven project (BW) [hours to complete]
+* [x] Set up React project (BW) [hours to complete]
+* [x] Create production database schema (RS) [hours to complete]
+* [x] Create test database schema (RS) [hours to complete]
 
 ### Server
 
 #### Models
 
-* [ ] Create Application Model (developer) [hours to complete]
-* [ ] Create Interview Model (developer) [hours to complete]
-* [ ] Create Job Posting Model (developer) [hours to complete]
-* [ ] Create Company Model (developer) [hours to complete]
-* [ ] Create Skill Model (developer) [hours to complete]
-* [ ] Create Status Enum (developer) [hours to complete]
-* [ ] Create Origin Enum (developer) [hours to complete]
-* [ ] Create Result Enum (developer) [hours to complete]
-* [ ] Create Interview Type Enum (developer) [hours to complete]
+* [x] Create Application Model (BW) [hours to complete]
+* [x] Create Interview Model (CA) [hours to complete]
+* [x] Create Job Posting Model (BW) [hours to complete]
+* [x] Create Company Model (BW) [hours to complete]
+* [x] Create Skill Model (BW) [hours to complete]
+* [x] Create Status Enum (BW) [hours to complete]
+* [x] Create Origin Enum (BW) [hours to complete]
+* [x] Create Result Enum (BW/CA) [hours to complete]
+* [x] Create Interview Type Enum (BW/CA) [hours to complete]
 
 #### Repository Layer
 
-* [ ] Create Application repository interface (developer) [hours to complete]
-* [ ] Create Interview repository interface (developer) [hours to complete]
-* [ ] Create Company repository interface (developer) [hours to complete]
-* [ ] Create Job Posting repository interface (developer) [hours to complete]
+* [x] Create Application repository interface (BW) [hours to complete]
+* [x] Create Interview repository interface (CA) [hours to complete]
+* [x] Create Company repository interface (BW) [hours to complete]
+* [x] Create Job Posting repository interface (BW) [hours to complete]
 
 
-* [ ] Create/test Application repository class (developer) [hours to complete]
-* [ ] Create/test Interview repository class (developer) [hours to complete]
-* [ ] Create/test Company repository class (developer) [hours to complete]
-* [ ] Create/test Job Posting repository class (developer) [hours to complete]
+* [x] Create Application repository class (BW) [hours to complete]
+* [x] Test Application repository class (developer) [hours to complete]
+* [x] Create/test Interview repository class (CA) [hours to complete]
+* [x] Create/test Company repository class (BW) [hours to complete]
+* [x] Create/test Job Posting repository class (BW) [hours to complete]
 
 #### Service Layer
 
-* [ ] Create/test Application service layer (developer) [hours to complete]
-* [ ] Create/test Interview service layer (developer) [hours to complete]
-* [ ] Create/test Company service layer (developer) [hours to complete]
-* [ ] Create/test Job Posting service layer (developer) [hours to complete]
+* [x] Create Application service layer (BW) [hours to complete]
+* [ ] Test Application service layer (developer) [hours to complete]
+* [x] Create/test Interview service layer (CA) [hours to complete]
+* [x] Create/test Company service layer (BW) [hours to complete]
+* [x] Create/test Job Posting service layer (BW) [hours to complete]
 
 #### Controller Layer
 
 * [ ] Create Application controller (developer) [hours to complete]
-* [ ] Create Interview controller (developer) [hours to complete]
-* [ ] Create Company controller (developer) [hours to complete]
-* [ ] Create Job Posting controller (developer) [hours to complete]
+* [x] Create Interview controller (CA) [hours to complete]
+* [x] Create Company controller (BW) [hours to complete]
+* [x] Create Job Posting controller (BW) [hours to complete]
 
 #### Other
 
@@ -64,7 +66,17 @@
       
 ### Client
 
+* [ ] Set up routing in App.js (developer) [hours to complete]
+* [ ] Create navbar component (developer) [hours to complete]
+* [ ] Create home page (developer) [hours to complete]
+* [ ] Create visualizations page (developer) [hours to complete]
+* [ ] Create applications overview page (developer) [hours to complete]
+* [ ] Create applications/id page (developer) [hours to complete]
+* [ ] Create applications form (developer) [hours to complete]
+* [ ] Create interview form (developer) [hours to complete]
+
 ### Additional
 
 * [ ] Create class diagram (developer) [hours to complete]
 * [ ] Create presentation (developer) [hours to complete]
+* [ ] Update database diagram (developer) [hours to complete]
