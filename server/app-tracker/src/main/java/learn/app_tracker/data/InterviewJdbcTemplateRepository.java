@@ -1,5 +1,6 @@
 package learn.app_tracker.data;
 
+import learn.app_tracker.data.mappers.InterviewMapper;
 import learn.app_tracker.models.Interview;
 import learn.app_tracker.models.enums.InterviewType;
 import learn.app_tracker.models.enums.Result;
@@ -23,19 +24,6 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
 
     private static final String INTERVIEW_COLUMN_NAMES = "interview_id, application_id, type_id, result_id, `when`, note";
 
-    private final RowMapper<Interview> mapper = (rs, i) -> {
-        Interview iv = new Interview();
-        iv.setInterviewId(rs.getInt("interview_id"));
-        iv.setApplicationId((rs.getInt("application_id")));
-        iv.setType(InterviewType.findByValue(rs.getInt("type_id")));
-        iv.setResult(Result.findByValue(rs.getInt("result_id")));
-
-        Timestamp timestamp = Timestamp.valueOf(rs.getString("when"));
-        iv.setWhen(timestamp.toLocalDateTime());
-
-        iv.setNotes(rs.getString("note"));
-        return iv;
-    };
 
     public InterviewJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -44,19 +32,19 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
     @Override
     public List<Interview> findAll() throws DataException {
         final String sql = String.format("select %s from interview;", INTERVIEW_COLUMN_NAMES);
-        return jdbcTemplate.query(sql, mapper);
+        return jdbcTemplate.query(sql, new InterviewMapper());
     }
 
     @Override
     public List<Interview> findAllByApplicationId(int appId) throws DataException {
         final String sql = String.format("select %s from interview " + "where application_id = ?;", INTERVIEW_COLUMN_NAMES);
-        return jdbcTemplate.query(sql, mapper, appId);
+        return jdbcTemplate.query(sql, new InterviewMapper(), appId);
     }
 
     @Override
     public Interview findById(int id) throws DataException {
         final String sql = String.format("select %s from interview " + "where interview_id = ?;", INTERVIEW_COLUMN_NAMES);
-        return jdbcTemplate.query(sql, mapper, id).stream()
+        return jdbcTemplate.query(sql, new InterviewMapper(), id).stream()
                 .findFirst()
                 .orElse(null);
     }
