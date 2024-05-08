@@ -2,7 +2,7 @@ package learn.app_tracker.data;
 
 import learn.app_tracker.models.Interview;
 import learn.app_tracker.models.enums.InterviewType;
-import learn.app_tracker.models.enums.Result;
+import learn.app_tracker.models.enums.InterviewResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +58,7 @@ class InterviewJdbcTemplateRepositoryTest {
 
         assertEquals(2, interview.getApplicationId());
         assertEquals(InterviewType.BEHAVIORAL.getTypeId(), interview.getType().getTypeId());
-        assertEquals(Result.PASS.getResultId(), interview.getResult().getResultId());
+        assertEquals(InterviewResult.PASS.getResultId(), interview.getResult().getResultId());
         LocalDateTime expected = LocalDateTime.of(2024, 2, 22, 3, 14, 7);
         assertEquals(expected, interview.getWhen());
         assertEquals("OK feelings", interview.getNotes());
@@ -114,7 +114,7 @@ class InterviewJdbcTemplateRepositoryTest {
         Interview interview = new Interview();
         interview.setApplicationId(1);
         interview.setType(InterviewType.TECHNICAL);
-        interview.setResult(Result.FAIL);
+        interview.setResult(InterviewResult.FAIL);
         interview.setWhen(LocalDateTime.of(2024, 3, 1, 12, 15, 0));
         interview.setNotes("This is a note.");
         return interview;

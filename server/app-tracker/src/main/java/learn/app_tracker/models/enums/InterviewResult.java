@@ -1,6 +1,6 @@
 package learn.app_tracker.models.enums;
 
-public enum Result {
+public enum InterviewResult {
 
     UNDETERMINED(1, "Undetermined"),
     PASS(2, "Pass"),
@@ -10,7 +10,7 @@ public enum Result {
 
     private final String text;
 
-    Result(int resultId, String text) {
+    InterviewResult(int resultId, String text) {
         this.resultId = resultId;
         this.text = text;
     }
@@ -23,10 +23,10 @@ public enum Result {
         return text;
     }
 
-    public static Result findById(int resultId) {
-        for (Result result : Result.values()) {
-            if (result.resultId == resultId) {
-                return result;
+    public static InterviewResult findById(int resultId) {
+        for (InterviewResult interviewResult : InterviewResult.values()) {
+            if (interviewResult.resultId == resultId) {
+                return interviewResult;
             }
         }
         String message = String.format("No Result with value: %s", resultId);
