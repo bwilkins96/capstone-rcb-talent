@@ -26,19 +26,19 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
     }
 
     @Override
-    public List<Interview> findAll() throws DataException {
+    public List<Interview> findAll() {
         final String sql = String.format("select %s from interview;", INTERVIEW_COLUMN_NAMES);
         return jdbcTemplate.query(sql, new InterviewMapper());
     }
 
     @Override
-    public List<Interview> findAllByApplicationId(int appId) throws DataException {
+    public List<Interview> findAllByApplicationId(int appId) {
         final String sql = String.format("select %s from interview " + "where application_id = ?;", INTERVIEW_COLUMN_NAMES);
         return jdbcTemplate.query(sql, new InterviewMapper(), appId);
     }
 
     @Override
-    public Interview findById(int id) throws DataException {
+    public Interview findById(int id) {
         final String sql = String.format("select %s from interview " + "where interview_id = ?;", INTERVIEW_COLUMN_NAMES);
         return jdbcTemplate.query(sql, new InterviewMapper(), id).stream()
                 .findFirst()
@@ -46,7 +46,7 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
     }
 
     @Override
-    public Interview add(Interview interview) throws DataException {
+    public Interview add(Interview interview) {
         final String sql = "insert into interview " +
                 "(application_id, type_id, result_id, `when`, note) " +
                 "values (?,?,?,?,?);";
@@ -72,7 +72,7 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
     }
 
     @Override
-    public boolean update(Interview interview) throws DataException {
+    public boolean update(Interview interview) {
         final String sql = "update interview set " +
                 "application_id = ?, " +
                 "type_id = ?, " +
@@ -93,7 +93,7 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
     }
 
     @Override
-    public boolean deleteById(int id) throws DataException {
+    public boolean deleteById(int id) {
         final String sql = "delete from interview where interview_id = ?;";
         return jdbcTemplate.update(sql, id) > 0;
     }

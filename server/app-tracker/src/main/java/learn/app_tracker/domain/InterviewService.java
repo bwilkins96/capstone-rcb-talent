@@ -1,6 +1,5 @@
 package learn.app_tracker.domain;
 
-import learn.app_tracker.data.DataException;
 import learn.app_tracker.data.InterviewRepository;
 import learn.app_tracker.data.JobApplicationRepository;
 import learn.app_tracker.models.Interview;
@@ -19,18 +18,19 @@ public class InterviewService {
         this.jobApplicationRepository = jobApplicationRepository;
     }
 
-    public List<Interview> findAll() throws DataException {
+    public List<Interview> findAll() {
         return repository.findAll();
     }
 
-    public List<Interview> findAllByApplicationId(int appId) throws DataException {
+    public List<Interview> findAllByApplicationId(int appId) {
         return repository.findAllByApplicationId(appId);
     }
-    public Interview findById(int id) throws DataException {
+
+    public Interview findById(int id) {
         return repository.findById(id);
     }
 
-    public Result<Interview> add(Interview interview) throws DataException {
+    public Result<Interview> add(Interview interview) {
         Result<Interview> result = validate(interview);
         if (!result.isSuccess()) {
             return result;
@@ -46,7 +46,7 @@ public class InterviewService {
         return result;
     }
 
-    public Result<Interview> update(Interview interview) throws DataException {
+    public Result<Interview> update(Interview interview) {
         Result<Interview> result = validate(interview);
         if (!result.isSuccess()) {
             return result;
@@ -65,7 +65,7 @@ public class InterviewService {
         return result;
     }
 
-    public boolean deleteById(int id) throws DataException {
+    public boolean deleteById(int id) {
         return repository.deleteById(id);
     }
 
