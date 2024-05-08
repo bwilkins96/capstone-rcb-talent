@@ -85,7 +85,7 @@ public class InterviewJdbcTemplateRepository implements InterviewRepository {
                 interview.getApplicationId(),
                 interview.getType().getTypeId(),
                 interview.getResult().getResultId(),
-                Date.valueOf(interview.getWhen().toLocalDate()),
+                Timestamp.valueOf(interview.getWhen()),
                 interview.getNotes(),
                 interview.getInterviewId());
 

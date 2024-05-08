@@ -17,9 +17,9 @@ Content-Type: application/json
 
 {
   "applicationId": 1,
-  "type": "BEHAVIORAL",
-  "result": "PASS",
-  "when": "Not sure how this one should look and I'm too tired to really look into it",
+  "type": "TECHNICAL",
+  "result": "UNDETERMINED",
+  "when": "2024-03-14T12:30:00",
   "notes": ""
 }
 
@@ -33,13 +33,13 @@ Content-Type: application/json
   "applicationId": 1,
   "type": "BEHAVIORAL",
   "result": "PASS",
-  "when": "Not sure how this one should look and I'm too tired to really look into it",
+  "when": "2024-03-14T01:30:00",
   "notes": ""
 }
 
 ###
 
-DELETE {{url}}/1 HTTP/1.1
+DELETE {{url}}/3 HTTP/1.1
 
 ###
 

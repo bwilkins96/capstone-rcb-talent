@@ -11,7 +11,7 @@ public class JobPosting {
     private String level;
     private boolean visaSponsorship;
     private String degree;
-    private ArrayList<String> skills;
+    private ArrayList<String> skills = new ArrayList<>();
 
     public JobPosting() {
 
