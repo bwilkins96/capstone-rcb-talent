@@ -50,6 +50,15 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 10px 0;
+}
+
+nav > a {
+  color: white;
+}
+
+nav > a:hover {
+  color: rgb(162, 232, 255);
 }
 
 .about {
