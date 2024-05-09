@@ -1,5 +1,6 @@
 import { Chart } from 'react-google-charts';
 import { useState, useEffect } from 'react';
+import { getNicerString } from '../utils';
 
 // if time, figure out how to do custom tool tip
 // leave as name for now
@@ -83,29 +84,27 @@ function Visualization() {
 
         let newSankeyData = jobApplications.map((jobApplication) => {
             if (jobApplication.origin === 'COLD_APPLY') {
-                return [`${jobApplication.origin} (${coldApplyCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
+                return [`${getNicerString(jobApplication.origin)} (${coldApplyCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
             } else if (jobApplication.origin === 'REFERRAL') {
-                return [`${jobApplication.origin} (${referralCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
+                return [`${getNicerString(jobApplication.origin)} (${referralCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
             } else if (jobApplication.origin === 'CAREER_FAIR') {
-                return [`${jobApplication.origin} (${careerFairCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
+                return [`${getNicerString(jobApplication.origin)} (${careerFairCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
             }
         });
 
         let results = jobApplications.map((jobApplication) => {
             if (jobApplication.status === 'PENDING') {
-                return ["All Job Applications", `${jobApplication.status} (${pendingCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)];
+                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${pendingCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)];
             } else if (jobApplication.status === 'OFFER') {
-                return ["All Job Applications", `${jobApplication.status} (${offerCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)];
+                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${offerCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)];
             } else if (jobApplication.status === 'REJECTION') {
-                return ["All Job Applications", `${jobApplication.status} (${rejectionCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
+                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${rejectionCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
             } else if (jobApplication.status === 'NO_RESPONSE') {
-                return ["All Job Applications", `${jobApplication.status} (${noResponseCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
+                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${noResponseCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
             } else if (jobApplication.status === 'WITHDRAWN') {
-                return ["All Job Applications", `${jobApplication.status} (${withdrawnCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
+                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${withdrawnCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
             }
         });
-
-        // per application thing to get a list of interviews
 
         newSankeyData = header.concat(newSankeyData, results);
         console.log(newSankeyData);
