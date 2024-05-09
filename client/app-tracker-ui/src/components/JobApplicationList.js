@@ -67,7 +67,7 @@ function JobApplicationList() {
                     <tbody>
                         {jobApplications.map(jobApplication => (
                             <tr key={jobApplication.applicationId}>
-                                <td>{jobApplication.posting}</td>
+                                <td>{jobApplication.posting.postingId}</td>
                                 <td>{jobApplication.status}</td>
                                 <td>{jobApplication.origin}</td>
                                 <td>{jobApplication.dateApplied}</td>
@@ -83,6 +83,7 @@ function JobApplicationList() {
                         ))}
                     </tbody>
                 </table>
+                <Link className='btn btn-primary btn-lg mr-2' to={`/interviews/appId/${1}`} > Interview tester</Link>
             </section>
         </main >
     </>);
