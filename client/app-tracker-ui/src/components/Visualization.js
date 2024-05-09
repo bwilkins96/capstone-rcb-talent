@@ -7,84 +7,70 @@ const createCustomTooltipHtml = (params) => {
     return `${params}`;
 }
 
-// const options = {
-//     sankey: {
-//         tooltip: { isHtml: true },
-//         link: { colorMode: 'gradient' },
-//         node: {
-//             colors: ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
-//                 '#cab2d6', '#ffff99', '#1f78b4', '#33a02c'],
-//             label: {
-//                 fontName: 'Open Sans',
-//                 fontSize: 14,
-//                 color: '#000000'//,
-//             },
-//         },
-//     },
-// };
+const options = {
+    sankey: {
+        tooltip: { isHtml: true },
+        link: { colorMode: 'gradient' },
+        node: {
+            colors: ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
+                '#cab2d6', '#ffff99', '#1f78b4', '#33a02c'],
+            label: {
+                fontName: 'Open Sans',
+                fontSize: 14,
+                color: '#000000'//,
+            },
+        },
+    },
+};
 
 function Visualization() {
-    // const [solarPanels, setSolarPanels] = useState([]);
-    // const [data, setData] = useState([]);
+    const [jobApplications, setJobApplications] = useState([]);
+    const [sankeyData, setSankeyData] = useState([]);
 
-    // const url = "http://localhost:8080/api/solarpanel";
+    const url = "http://localhost:8080/api/job/application"
 
-    // useEffect(() => {
-    //     fetch(url)
-    //         .then(response => {
-    //             if (response.status === 200) {
-    //                 return response.json();
-    //             } else {
-    //                 return Promise.reject(`Unexpected status code: ${response.status}`);
-    //             }
-    //         })
-    //         .then(data => setSolarPanels(data)) // here we are setting our data to our state variable
-    //         .catch(console.log);
-    // }, []);
+    useEffect(() => {
+        fetch(url)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    return Promise.reject(`Unexpected status code: ${response.status}`);
+                }
+            })
+            .then(data => setJobApplications(data)) // here we are setting our data to our state variable
+            .catch(console.log);
+    }, [jobApplications]); // double check on this
 
+    useEffect(() => {
+        handleDataUpdate();
+    }, [jobApplications]);
 
-    // useEffect(() => {
-    //     handleDataUpdate();
-    // }, [solarPanels]);
+    function handleDataUpdate() {
+        const header = [["From", "To", "Weight", { 'type': 'string', 'role': 'tooltip', 'p': { 'html': true } }]];
 
-    // function handleDataUpdate() {
-    //     const header = ["From", "To", "Weight", { 'type': 'string', 'role': 'tooltip', 'p': { 'html': true } }];
-    //     let newData = solarPanels.map((solarPanel) =>
-    //         [solarPanel.section, "All Solar Panels", 1, createCustomTooltipHtml(`${solarPanel.section}`)]
-    //     );
-    //     const allToMaterials = solarPanels.map((solarPanel) =>
-    //         ["All Solar Panels", solarPanel.material, 1, createCustomTooltipHtml(`All Solar Panels`)]
-    //     );
-    //     console.log(solarPanels);
-    //     newData.unshift(header);
-    //     newData = newData.concat(allToMaterials);
-    //     const materialToYear = solarPanels.filter(sp => sp.section != "The Ridge").map((solarPanel) => {
-    //         if (solarPanel.yearInstalled > 2010) {
-    //             return [solarPanel.material, "Installed after 2000", 1, createCustomTooltipHtml(`${solarPanel.material}`)];
-    //         } else {
-    //             return [solarPanel.material, "Installed before 2000", 1, createCustomTooltipHtml(`${solarPanel.material}`)];
-    //         }
-    //     }
-    //     );
-    //     let isTracking = solarPanels.filter(sp => sp.tracking && sp.yearInstalled > 2000)
-    //         .map(sp => ["Installed after 2000", "Is tracking", 1, createCustomTooltipHtml(`Installed after 2000`)]);
-    //     let earlyRidgeTracking = solarPanels.filter(sp => sp.section === "The Ridge" && sp.yearInstalled <= 2000 && sp.tracking)
-    //         .map(sp => ["All Solar Panels", "Is tracking", 1, createCustomTooltipHtml(`The Ridge, installed before 2000, tracking`)]);
-    //     newData = newData.concat(materialToYear, isTracking, earlyRidgeTracking);
+        let newSankeyData = jobApplications.map(jobApplication =>
+            [jobApplication.origin, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.orgin} -> All Job Applications`)]
+        );
 
-    //     console.log(newData);
-    //     setData(newData);
-    // }
+        let results = jobApplications.map(jobApplication =>
+            ["All Job Applications", jobApplication.status, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.orgin}`)]
+        );
+
+        newSankeyData = header.concat(newSankeyData, results);
+        console.log(newSankeyData);
+        setSankeyData(newSankeyData);
+    }
 
     return (
         <div align="center">
-            {/* <Chart
+            <Chart
                 chartType="Sankey"
                 width="82%"
                 height="300px"
-                data={data}
+                data={sankeyData}
                 options={options}
-            /> */}
+            />
         </div>
     );
 }

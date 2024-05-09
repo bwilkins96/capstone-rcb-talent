@@ -23,7 +23,7 @@ function JobApplicationList() {
         // first find the application
         const jobApplication = jobApplications.find(jobApplication => jobApplication.applicationId === applicationId);
         // confirm
-        if (window.confirm(`Delete Job Application: ${jobApplication.posting}?`)) {
+        if (window.confirm(`Delete Job Application: ${jobApplication.applicationId}?`)) {
             const init = {
                 method: "DELETE"
             };
@@ -52,7 +52,7 @@ function JobApplicationList() {
         <main className='container'>
             <section>
                 <h2 className="mb-4">JobApplications</h2>
-                <button className='btn btn-primary' onClick={() => navigate('/job/application/add')}>Add Job Application</button>
+                <button className='btn btn-primary' onClick={() => navigate('/applications/add')}>Add Job Application</button>
                 <table className="table table-striped table-hover table-sm">
                     <thead className='thead-dark'>
                         <tr>
@@ -74,7 +74,7 @@ function JobApplicationList() {
                                 <td>{jobApplication.notes}</td>
                                 <td>
                                     <div className="float-right mr-2">
-                                        <Link className='btn btn-primary btn-sm mr-2' to={`/job/application/edit/${jobApplication.applicationId}`} > Edit</Link>
+                                        <Link className='btn btn-primary btn-sm mr-2' to={`/applications/edit/${jobApplication.applicationId}`} > Edit</Link>
                                         <button className='btn btn-danger btn-sm mr-2' onClick={() =>
                                             handleDeleteApplication(jobApplication.applicationId)}>Delete</button>
                                     </div>

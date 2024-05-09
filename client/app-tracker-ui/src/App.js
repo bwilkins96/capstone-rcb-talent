@@ -18,8 +18,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='application/add' element={<JobApplicationForm />} />
-        <Route path='/application/edit/:id' element={<JobApplicationForm />} />
+        <Route path='applications/add' element={<JobApplicationForm />} />
+        <Route path='/applications/edit/:id' element={<JobApplicationForm />} />
         <Route path='/applications' element={<JobApplicationList />} />
         <Route path='/interview/add' element={<InterviewForm />} />
         <Route path='/interview/edit/:id' element={<InterviewForm />} />
