@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getNicerString } from '../utils';
 
 function JobApplicationList() {
     const [jobApplications, setJobApplications] = useState([]);
@@ -51,8 +52,8 @@ function JobApplicationList() {
     return (<>
         <main className='container'>
             <section>
-                <h2 className="mb-4">JobApplications</h2>
-                <button className='btn btn-primary' onClick={() => navigate('/applications/add')}>Add Job Application</button>
+                <h2 className="mb-4 mt-2">Job Applications</h2>
+                <button className='btn btn-primary mb-2' onClick={() => navigate('/applications/add')}>Add Job Application</button>
                 <table className="table table-striped table-hover table-sm">
                     <thead className='thead-dark'>
                         <tr>
@@ -61,6 +62,7 @@ function JobApplicationList() {
                             <th>Origin</th>
                             <th>Date Applied</th>
                             <th>Notes</th>
+                            <th>More Details</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
@@ -68,14 +70,19 @@ function JobApplicationList() {
                         {jobApplications.map(jobApplication => (
                             <tr key={jobApplication.applicationId}>
                                 <td>{jobApplication.posting.postingId}</td>
-                                <td>{jobApplication.status}</td>
-                                <td>{jobApplication.origin}</td>
+                                <td>{getNicerString(jobApplication.status)}</td>
+                                <td>{getNicerString(jobApplication.origin)}</td>
                                 <td>{jobApplication.dateApplied}</td>
                                 <td>{jobApplication.notes}</td>
                                 <td>
+                                    <div>
+                                        <Link to={`/applications/${jobApplication.applicationId}`}>Details</Link>
+                                    </div>
+                                </td>
+                                <td>
                                     <div className="float-right mr-2">
-                                        <Link className='btn btn-primary btn-sm mr-2' to={`/applications/edit/${jobApplication.applicationId}`} > Edit</Link>
-                                        <button className='btn btn-danger btn-sm mr-2' onClick={() =>
+                                        <Link className='btn btn-primary mr-2' to={`/applications/edit/${jobApplication.applicationId}`} > Edit</Link>
+                                        <button className='btn btn-danger mr-2' onClick={() =>
                                             handleDeleteApplication(jobApplication.applicationId)}>Delete</button>
                                     </div>
                                 </td>

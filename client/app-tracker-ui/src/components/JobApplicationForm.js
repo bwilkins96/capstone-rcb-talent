@@ -155,13 +155,12 @@ function JobApplicationForm() {
         }
         
         setApplication(newApplication);
-        console.log(newApplication);
     }
 
     return (
     <main className='container'>
 
-        <h2 className='mb-4'>{addOrEdit()}</h2>
+        <h2 className='mb-4 mt-2'>{addOrEdit()}</h2>
 
         {(errors.length > 0) && (
                 <div className='alert alert-danger mb-2 max600'>
@@ -177,6 +176,7 @@ function JobApplicationForm() {
                     <label htmlFor='status' className='form-label'>Status</label>
 
                     <select 
+                    className='form-control'
                     id='status' 
                     name='status' 
                     value={application.status}
@@ -191,7 +191,8 @@ function JobApplicationForm() {
                 <fieldset className='mb-4'>
                     <label htmlFor='origin' className='form-label'>Origin</label>
 
-                    <select 
+                    <select
+                    className='form-control' 
                     id='origin' 
                     name='origin' 
                     value={application.origin}
@@ -205,6 +206,7 @@ function JobApplicationForm() {
                     <label htmlFor='posting' className='form-label'>Posting</label>
 
                     <select 
+                    className='form-control'
                     id='posting' 
                     name='posting' 
                     value={application.posting.postingId}
@@ -234,12 +236,13 @@ function JobApplicationForm() {
                     name='notes'
                     value={application.notes}
                     onChange={handleChange}
+                    rows='8'
                     ></textarea>
                 </fieldset>
 
                 <div>
-                    <button className='btn btn-success me-2' type='submit'>{addOrEdit()}</button>
-                    <Link className='btn btn-warning' to={'/'}>Cancel</Link>
+                    <button className='btn btn-success mr-2' type='submit'>{addOrEdit()}</button>
+                    <Link className='btn btn-warning' to={'/applications'}>Cancel</Link>
                 </div>
         </form>
 
