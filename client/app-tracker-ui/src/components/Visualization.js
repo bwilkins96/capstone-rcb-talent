@@ -27,7 +27,8 @@ function Visualization() {
     const [jobApplications, setJobApplications] = useState([]);
     const [sankeyData, setSankeyData] = useState([]);
 
-    const url = "http://localhost:8080/api/job/application"
+    const url = "http://localhost:8080/api/job/application";
+    const url2 = ""
 
     useEffect(() => {
         fetch(url)
@@ -40,22 +41,72 @@ function Visualization() {
             })
             .then(data => setJobApplications(data)) // here we are setting our data to our state variable
             .catch(console.log);
-    }, [jobApplications]); // double check on this
+    }, []);
 
     useEffect(() => {
         handleDataUpdate();
     }, [jobApplications]);
 
     function handleDataUpdate() {
+
+        let pendingCount = 0;
+        let offerCount = 0;
+        let rejectionCount = 0;
+        let noResponseCount = 0;
+        let withdrawnCount = 0;
+        let coldApplyCount = 0;
+        let referralCount = 0;
+        let careerFairCount = 0;
+
+        for (const jobApplication of jobApplications) {
+            if (jobApplication.status === 'PENDING') {
+                pendingCount++;
+            } else if (jobApplication.status === 'OFFER') {
+                offerCount++;
+            } else if (jobApplication.status === 'REJECTION') {
+                rejectionCount++;
+            } else if (jobApplication.status === 'NO_RESPONSE') {
+                noResponseCount++;
+            } else if (jobApplication.status === 'WITHDRAWN') {
+                withdrawnCount++;
+            }
+
+            if (jobApplication.origin === 'COLD_APPLY') {
+                coldApplyCount++;
+            } else if (jobApplication.origin === 'REFERRAL') {
+                referralCount++;
+            } else if (jobApplication.origin === 'CAREER_FAIR') {
+                careerFairCount++;
+            }
+        }
+
         const header = [["From", "To", "Weight", { 'type': 'string', 'role': 'tooltip', 'p': { 'html': true } }]];
 
-        let newSankeyData = jobApplications.map(jobApplication =>
-            [jobApplication.origin, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.orgin} -> All Job Applications`)]
-        );
+        let newSankeyData = jobApplications.map((jobApplication) => {
+            if (jobApplication.origin === 'COLD_APPLY') {
+                return [`${jobApplication.origin} (${coldApplyCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
+            } else if (jobApplication.origin === 'REFERRAL') {
+                return [`${jobApplication.origin} (${referralCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
+            } else if (jobApplication.origin === 'CAREER_FAIR') {
+                return [`${jobApplication.origin} (${careerFairCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
+            }
+        });
 
-        let results = jobApplications.map(jobApplication =>
-            ["All Job Applications", jobApplication.status, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.orgin}`)]
-        );
+        let results = jobApplications.map((jobApplication) => {
+            if (jobApplication.status === 'PENDING') {
+                return ["All Job Applications", `${jobApplication.status} (${pendingCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)];
+            } else if (jobApplication.status === 'OFFER') {
+                return ["All Job Applications", `${jobApplication.status} (${offerCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)];
+            } else if (jobApplication.status === 'REJECTION') {
+                return ["All Job Applications", `${jobApplication.status} (${rejectionCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
+            } else if (jobApplication.status === 'NO_RESPONSE') {
+                return ["All Job Applications", `${jobApplication.status} (${noResponseCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
+            } else if (jobApplication.status === 'WITHDRAWN') {
+                return ["All Job Applications", `${jobApplication.status} (${withdrawnCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
+            }
+        });
+
+        // per application thing to get a list of interviews
 
         newSankeyData = header.concat(newSankeyData, results);
         console.log(newSankeyData);
