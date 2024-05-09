@@ -58,7 +58,7 @@ function JobApplicationInfo() {
 
     return(<>
         <main className="container">
-            <h2 className="mb-4"><u>Application Details</u></h2>
+            <h2 className="mb-4 mt-2"><u>Application Details</u></h2>
             <Link className='btn btn-info btn-lg mb-4' type='button' to={'/applications'} >Back to List</Link>
             <div>
                 {displayPostingInfo()}

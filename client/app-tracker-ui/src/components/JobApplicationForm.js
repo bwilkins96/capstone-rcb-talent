@@ -160,7 +160,7 @@ function JobApplicationForm() {
     return (
     <main className='container'>
 
-        <h2 className='mb-4'>{addOrEdit()}</h2>
+        <h2 className='mb-4 mt-2'>{addOrEdit()}</h2>
 
         {(errors.length > 0) && (
                 <div className='alert alert-danger mb-2 max600'>

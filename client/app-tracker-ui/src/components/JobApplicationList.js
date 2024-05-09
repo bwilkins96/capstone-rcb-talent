@@ -52,7 +52,7 @@ function JobApplicationList() {
     return (<>
         <main className='container'>
             <section>
-                <h2 className="mb-4">JobApplications</h2>
+                <h2 className="mb-4 mt-2">Job Applications</h2>
                 <button className='btn btn-primary' onClick={() => navigate('/applications/add')}>Add Job Application</button>
                 <table className="table table-striped table-hover table-sm">
                     <thead className='thead-dark'>
