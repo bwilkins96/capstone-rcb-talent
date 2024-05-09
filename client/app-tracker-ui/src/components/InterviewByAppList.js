@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react';
-import {Link, useNavigate, useParams} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import { getNicerString } from '../utils';
+
 
 function InterviewByAppList({ appId }) {
     const [interviews, setInterviews] = useState([]);
     const url = "http://localhost:8080/api/interview"
     const navigate = useNavigate();
-
-    //const { appId } = useParams();
 
     // Bringing in our data 
     useEffect(()=>{
@@ -20,7 +20,7 @@ function InterviewByAppList({ appId }) {
         })
         .then(data => setInterviews(data)) // here we are setting our data to our state variable
         .catch(console.log);
-    }, [appId]); // May remove this appId
+    }, [appId]);
 
     const handleDeleteInterview = (interviewId) => {
         // Find the interview
@@ -71,8 +71,8 @@ function InterviewByAppList({ appId }) {
                             <tr key={interview.interviewId}>
                                 <td>{interview.interviewId}</td>
                                 <td>{interview.applicationId}</td>
-                                <td>{interview.type}</td>
-                                <td>{interview.result}</td>
+                                <td>{getNicerString(interview.type)}</td>
+                                <td>{getNicerString(interview.result)}</td>
                                 <td>{displayWhen(interview.when)}</td>
                                 <td>{interview.notes}</td>
                                 <td>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getNicerString } from '../utils';
 
 function JobApplicationList() {
     const [jobApplications, setJobApplications] = useState([]);
@@ -69,8 +70,8 @@ function JobApplicationList() {
                         {jobApplications.map(jobApplication => (
                             <tr key={jobApplication.applicationId}>
                                 <td>{jobApplication.posting.postingId}</td>
-                                <td>{jobApplication.status}</td>
-                                <td>{jobApplication.origin}</td>
+                                <td>{getNicerString(jobApplication.status)}</td>
+                                <td>{getNicerString(jobApplication.origin)}</td>
                                 <td>{jobApplication.dateApplied}</td>
                                 <td>{jobApplication.notes}</td>
                                 <td>
