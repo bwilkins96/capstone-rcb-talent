@@ -74,6 +74,10 @@ nav > a:hover {
   color: rgb(162, 232, 255);
 }
 
+.btn {
+  font-size: 1.2rem;
+}
+
 .about {
   display: flex;
   justify-content: center;
