@@ -79,3 +79,69 @@ DELETE {{url}}/2 HTTP/1.1
 
 DELETE {{url}}/99 HTTP/1.1
 
+### Extra Post Requests
+
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 0,
+    "posting": {
+        "postingId": 2
+    },
+    "status": "PENDING",
+    "origin": "CAREER_FAIR",
+    "dateApplied": "2024-04-04",
+    "notes": "another application"
+}
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 0,
+    "posting": {
+        "postingId": 2
+    },
+    "status": "WITHDRAWN",
+    "origin": "REFERRAL",
+    "dateApplied": "2024-05-02",
+    "notes": ""
+}
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 0,
+    "posting": {
+        "postingId": 2
+    },
+    "status": "WITHDRAWN",
+    "origin": "REFERRAL",
+    "dateApplied": "2024-05-02",
+    "notes": ""
+}
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 0,
+    "posting": {
+        "postingId": 2
+    },
+    "status": "WITHDRAWN",
+    "origin": "REFERRAL",
+    "dateApplied": "2024-05-02",
+    "notes": ""
+}
+
+###
