@@ -233,11 +233,12 @@ function JobApplicationForm() {
                     name='notes'
                     value={application.notes}
                     onChange={handleChange}
+                    cols='8'
                     ></textarea>
                 </fieldset>
 
                 <div>
-                    <button className='btn btn-success me-2' type='submit'>{addOrEdit()}</button>
+                    <button className='btn btn-success mr-2' type='submit'>{addOrEdit()}</button>
                     <Link className='btn btn-warning' to={'/applications'}>Cancel</Link>
                 </div>
         </form>

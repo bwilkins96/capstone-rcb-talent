@@ -53,7 +53,7 @@ function JobApplicationList() {
         <main className='container'>
             <section>
                 <h2 className="mb-4 mt-2">Job Applications</h2>
-                <button className='btn btn-primary' onClick={() => navigate('/applications/add')}>Add Job Application</button>
+                <button className='btn btn-primary mb-2' onClick={() => navigate('/applications/add')}>Add Job Application</button>
                 <table className="table table-striped table-hover table-sm">
                     <thead className='thead-dark'>
                         <tr>
@@ -81,8 +81,8 @@ function JobApplicationList() {
                                 </td>
                                 <td>
                                     <div className="float-right mr-2">
-                                        <Link className='btn btn-primary btn-sm mr-2' to={`/applications/edit/${jobApplication.applicationId}`} > Edit</Link>
-                                        <button className='btn btn-danger btn-sm mr-2' onClick={() =>
+                                        <Link className='btn btn-primary mr-2' to={`/applications/edit/${jobApplication.applicationId}`} > Edit</Link>
+                                        <button className='btn btn-danger mr-2' onClick={() =>
                                             handleDeleteApplication(jobApplication.applicationId)}>Delete</button>
                                     </div>
                                 </td>
