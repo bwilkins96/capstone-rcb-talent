@@ -6,7 +6,7 @@ function Home() {
     return (<>
         <header>
             <div>
-                <h1>Application Tracker</h1>
+                <h1 className="backgroundHeader bg-dark">Application Tracker</h1>
             </div>
         </header>
         <section className="about">

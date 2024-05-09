@@ -2,7 +2,7 @@ function About() {
     return (<>
         <header>
             <div>
-                <h1>About Us</h1>
+                <h1 className="backgroundHeader bg-dark">About Us</h1>
             </div>
         </header>
         <section align="center">
