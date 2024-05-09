@@ -69,18 +69,18 @@
       
 ### Client
 
-* [ ] Set up routing in App.js (RS) [1]
-* [ ] Create navbar component (RS) [1]
-* [ ] Create home page (RS) [2]
-* [ ] Create visualizations page (RS) [4]
-* [ ] Create applications overview page (RS) [2]
-* [ ] Create applications/id page (developer) [2]
-* [ ] Create applications form (BW) [2]
-* [ ] Create interview form (CA) [2]
-* [ ] Create interview list (CA) [2]
+* [x] Set up routing in App.js (RS) [1]
+* [x] Create navbar component (RS) [1]
+* [x] Create home page (RS) [2]
+* [x] Create visualizations page (RS) [4]
+* [x] Create applications overview page (RS) [2]
+* [x] Create applications/id page (CA) [2]
+* [x] Create applications form (BW) [2]
+* [x] Create interview form (CA) [2]
+* [x] Create interview list (CA) [2]
+* [ ] Update styles (All) [3]
 
 ### Additional
 
-* [ ] Create class diagram (developer) [2]
 * [ ] Create presentation (All) [1]
 * [x] Update database diagram (BW) [1]
