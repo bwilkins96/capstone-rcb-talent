@@ -176,6 +176,7 @@ function JobApplicationForm() {
                     <label htmlFor='status' className='form-label'>Status</label>
 
                     <select 
+                    className='form-control'
                     id='status' 
                     name='status' 
                     value={application.status}
@@ -190,7 +191,8 @@ function JobApplicationForm() {
                 <fieldset className='mb-4'>
                     <label htmlFor='origin' className='form-label'>Origin</label>
 
-                    <select 
+                    <select
+                    className='form-control' 
                     id='origin' 
                     name='origin' 
                     value={application.origin}
@@ -204,6 +206,7 @@ function JobApplicationForm() {
                     <label htmlFor='posting' className='form-label'>Posting</label>
 
                     <select 
+                    className='form-control'
                     id='posting' 
                     name='posting' 
                     value={application.posting.postingId}
@@ -233,7 +236,7 @@ function JobApplicationForm() {
                     name='notes'
                     value={application.notes}
                     onChange={handleChange}
-                    cols='8'
+                    rows='8'
                     ></textarea>
                 </fieldset>
 
