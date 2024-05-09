@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Navbar from './components/Navbar';
 import JobApplicationForm from './components/JobApplicationForm';
 import JobApplicationList from './components/JobApplicationList';
-import InterviewByAppList from './components/InterviewByAppList';
+import JobApplicationInfo from './components/JobApplicationInfo';
 import InterviewForm from './components/InterviewForm';
 import About from './components/About';
 import NotFound from './components/NotFound';
@@ -21,9 +21,9 @@ function App() {
         <Route path='applications/add' element={<JobApplicationForm />} />
         <Route path='/applications/edit/:id' element={<JobApplicationForm />} />
         <Route path='/applications' element={<JobApplicationList />} />
+        <Route path='/applications/:id' element={<JobApplicationInfo />} />
         <Route path='/interview/add' element={<InterviewForm />} />
         <Route path='/interview/edit/:id' element={<InterviewForm />} />
-        <Route path='/interviews/appId/:appId' element={<InterviewByAppList />} />
         <Route path='/about' element={<About />} />
         <Route path='/sankey/diagram' element={<Visualization />} />
         <Route path='*' element={<NotFound />} />

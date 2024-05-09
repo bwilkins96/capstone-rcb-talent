@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react';
 import {Link, useNavigate, useParams} from 'react-router-dom';
 
-function InterviewByAppList() {
+function InterviewByAppList({ appId }) {
     const [interviews, setInterviews] = useState([]);
     const url = "http://localhost:8080/api/interview"
     const navigate = useNavigate();
 
-    const { appId } = useParams();
+    //const { appId } = useParams();
 
     // Bringing in our data 
     useEffect(()=>{
@@ -20,7 +20,7 @@ function InterviewByAppList() {
         })
         .then(data => setInterviews(data)) // here we are setting our data to our state variable
         .catch(console.log);
-    }, [appId]);
+    }, [appId]); // May remove this appId
 
     const handleDeleteInterview = (interviewId) => {
         // Find the interview
@@ -53,7 +53,7 @@ function InterviewByAppList() {
         <main className='container'>
             <section>
                 <h2 className='mb-4'>Interviews</h2>
-                <button className='btn btn-primary btn-lg mb-3' onClick={() => navigate('/interview/add')}>Add Interview</button>
+                <button className='btn btn-primary btn-lg mb-3' onClick={() => navigate('/interview/add', { state: { applicationId: appId }})}>Add Interview</button>
                 <table className='table table-striped table-hover table-md'>
                     <thead className='thead-dark'>
                         <tr>

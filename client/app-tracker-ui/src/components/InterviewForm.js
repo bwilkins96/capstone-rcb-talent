@@ -9,7 +9,7 @@ const interviewDefault = {
     notes: ""
 }
 
-function InterviewForm() {
+function InterviewForm({ applicationId }) {
     const [interview, setInterview] = useState(interviewDefault);
     const [errors, setErrors] = useState([]);
 
@@ -79,7 +79,7 @@ function InterviewForm() {
         .then(data => {
             if (!data) {
                 // update was successful -> go to the previous page (application deatails) where we updated the interview
-                navigate(-1);
+                navigate(`/applications/${interview.applicationId}`);
             } else {
                 setErrors(data);
             }
@@ -107,6 +107,7 @@ function InterviewForm() {
         .then(data => {
             // add was successful as we have a positive ID -> go to the previous page (application deatails) where we added the interview
             if (data.interviewId) {
+                // navigate(`/applications/${applicationId}`);
                 navigate(-1);
             } else {
                 setErrors(data);
@@ -179,6 +180,7 @@ function InterviewForm() {
                     </fieldset>
                     <div className='mt-4'>
                         <button className='btn btn-success btn-lg mr-2' type='submit'>{id > 0 ? 'Update Interview' : 'Add Interview'}</button>
+                        {/* <button className='btn btn-warning btn-lg' type='button' onClick={() => navigate(`/applications/${interview.applicationId}`)}>Cancel</button> */}
                         <button className='btn btn-warning btn-lg' type='button' onClick={() => navigate(-1)}>Cancel</button>
                     </div>
                 </form>
