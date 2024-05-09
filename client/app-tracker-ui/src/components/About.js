@@ -5,7 +5,7 @@ function About() {
                 <h1>About Us</h1>
             </div>
         </header>
-        <section>
+        <section align="center">
             <AboutText />
         </section>
         <footer>
@@ -15,16 +15,44 @@ function About() {
 }
 
 export function AboutText() {
-    return (<section className="about">
+    return (
+    <section className="about container">
         <div>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus et malesuada. Maecenas accumsan lacus vel facilisis volutpat est velit egestas. Arcu cursus vitae congue mauris. Sagittis id consectetur purus ut faucibus pulvinar elementum. Viverra aliquet eget sit amet tellus cras. Sit amet est placerat in. Integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Amet consectetur adipiscing elit pellentesque. Erat nam at lectus urna duis convallis. Quis commodo odio aenean sed adipiscing. Venenatis cras sed felis eget velit. Massa placerat duis ultricies lacus. Diam phasellus vestibulum lorem sed risus ultricies. Sagittis orci a scelerisque purus semper eget duis.<br />
+                We created this app with the idea of helping job seekers 
+                keep track of their applications.
+            </p>
+            
+            <h3 className="mb-4 mt-4">About the Team</h3>
+            <p>
+                <b>Radhika Sinha - </b>
+                I am a Computer Science graduate from the University of California, Santa Cruz. 
+                Besides coding, my hobbies include weightlifting and freelance photography. 
+                I’ve gained many valuable skills through my interests— 
+                such as the ability to talk to people, an innate desire to be creative, 
+                and determination even when faced with setbacks— 
+                and I believe these are the key to thriving as an engineer. 
+                I’m excited to embark on this lifelong journey of learning 
+                and improving my skills in the tech space.
             </p>
             <p>
-                Orci eu lobortis elementum nibh. Euismod elementum nisi quis eleifend quam adipiscing vitae. Libero nunc consequat interdum varius sit amet mattis. Nisl rhoncus mattis rhoncus urna neque viverra justo nec. Ut aliquam purus sit amet luctus venenatis lectus. Vestibulum sed arcu non odio euismod lacinia at quis risus. In nibh mauris cursus mattis molestie a iaculis. Nunc sed augue lacus viverra vitae congue eu consequat ac. Vitae semper quis lectus nulla at volutpat. Dolor morbi non arcu risus quis. Dictumst quisque sagittis purus sit amet volutpat. Sit amet est placerat in egestas. Bibendum enim facilisis gravida neque convallis a cras. Orci a scelerisque purus semper eget duis at.
+                <b>Cristian Astorga - </b>
+                I am a graduate of the University of Texas at Austin. 
+                I've always enjoyed putting things together, such as Legos or model kits, 
+                so I was instantly intrigued when I was first introduced to Computer Science. 
+                From facing a difficult problem to putting the solution together, 
+                seeing my work at the end of the day has always brought me the utmost satisfaction.
+            </p>
+            <p>
+                <b>Benjamin Wilkins - </b> 
+                I started my coding journey by completing App Academny Open's coding bootcamp. 
+                I then completed a Master's degree in Software Development 
+                at Maryville University of St. Louis. 
+                I enjoy swimming, movies, and spending time with my wife. 
             </p>
         </div>
-    </section>);
+    </section>
+    );
 }
 
 export default About;
