@@ -16,8 +16,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='application/add' element={<JobApplicationForm />} />
-        <Route path='/application/edit/:id' element={<JobApplicationForm />} />
+        <Route path='applications/add' element={<JobApplicationForm />} />
+        <Route path='/applications/edit/:id' element={<JobApplicationForm />} />
         <Route path='/applications' element={<JobApplicationList />} />
         <Route path='/about' element={<About />} />
         <Route path='/sankey/diagram' element={<Visualization />} />
