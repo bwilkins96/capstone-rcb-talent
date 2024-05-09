@@ -84,30 +84,30 @@ function Visualization() {
 
         let newSankeyData = jobApplications.map((jobApplication) => {
             if (jobApplication.origin === 'COLD_APPLY') {
-                return [`${getNicerString(jobApplication.origin)} (${coldApplyCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
+                return [`${getNicerString(jobApplication.origin)} (${coldApplyCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${getNicerString(jobApplication.origin)} -> All Job Applications`)];
             } else if (jobApplication.origin === 'REFERRAL') {
-                return [`${getNicerString(jobApplication.origin)} (${referralCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
+                return [`${getNicerString(jobApplication.origin)} (${referralCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${getNicerString(jobApplication.origin)} -> All Job Applications`)];
             } else if (jobApplication.origin === 'CAREER_FAIR') {
-                return [`${getNicerString(jobApplication.origin)} (${careerFairCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${jobApplication.origin} -> All Job Applications`)];
+                return [`${getNicerString(jobApplication.origin)} (${careerFairCount})`, "All Job Applications", 1, createCustomTooltipHtml(`${getNicerString(jobApplication.origin)} -> All Job Applications`)];
             }
         });
 
         let results = jobApplications.map((jobApplication) => {
             if (jobApplication.status === 'PENDING') {
-                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${pendingCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)];
+                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${pendingCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${getNicerString(jobApplication.status)}`)];
             } else if (jobApplication.status === 'OFFER') {
-                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${offerCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)];
+                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${offerCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${getNicerString(jobApplication.status)}`)];
             } else if (jobApplication.status === 'REJECTION') {
-                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${rejectionCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
+                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${rejectionCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${getNicerString(jobApplication.status)}`)]
             } else if (jobApplication.status === 'NO_RESPONSE') {
-                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${noResponseCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
+                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${noResponseCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${getNicerString(jobApplication.status)}`)]
             } else if (jobApplication.status === 'WITHDRAWN') {
-                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${withdrawnCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${jobApplication.status}`)]
+                return ["All Job Applications", `${getNicerString(jobApplication.status)} (${withdrawnCount})`, 1, createCustomTooltipHtml(`All Job Applications -> ${getNicerString(jobApplication.status)}`)]
             }
         });
 
         newSankeyData = header.concat(newSankeyData, results);
-        console.log(newSankeyData);
+
         setSankeyData(newSankeyData);
     }
 
