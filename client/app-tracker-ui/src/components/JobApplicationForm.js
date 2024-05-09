@@ -155,7 +155,6 @@ function JobApplicationForm() {
         }
         
         setApplication(newApplication);
-        console.log(newApplication);
     }
 
     return (
