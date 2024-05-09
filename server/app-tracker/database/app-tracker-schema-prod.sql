@@ -86,7 +86,8 @@ create table interview(
     note varchar(1000) null,
     constraint fk_interview_application
 		foreign key (application_id)
-        references application(application_id),
+        references application(application_id)
+        on delete cascade,
     constraint fk_interview_interview_type
 		foreign key (type_id)
         references interview_type(type_id),
