@@ -78,9 +78,9 @@
 * [x] Create applications form (BW) [2]
 * [x] Create interview form (CA) [2]
 * [x] Create interview list (CA) [2]
-* [ ] Update styles (All) [3]
+* [x] Update styles (All) [3]
 
 ### Additional
 
-* [ ] Create presentation (All) [1]
+* [x] Create presentation (All) [2]
 * [x] Update database diagram (BW) [1]
