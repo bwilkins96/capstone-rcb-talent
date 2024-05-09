@@ -18,7 +18,7 @@ function JobApplicationList() {
             })
             .then(data => setJobApplications(data)) // here we are setting our data to our state variable
             .catch(console.log);
-    }, [jobApplications]);
+    }, []);
 
     const handleDeleteApplication = (applicationId) => {
         // first find the application
@@ -30,8 +30,8 @@ function JobApplicationList() {
             };
             fetch(`${url}/${applicationId}`, init)
                 .then(response => {
-                    if (response.stats === 204) {
-                        const newJobApplications = jobApplications.filter(jobApplication => jobApplication.id !== applicationId);
+                    if (response.status === 204) {
+                        const newJobApplications = jobApplications.filter(jobApplication => jobApplication.applicationId !== applicationId);
                         setJobApplications(newJobApplications);
                     } else {
                         return Promise.reject(`Unexpected Status Code: ${response.status}`);
