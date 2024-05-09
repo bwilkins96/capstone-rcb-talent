@@ -111,6 +111,14 @@ function Visualization() {
         setSankeyData(newSankeyData);
     }
 
+    if (jobApplications.length === 0) {
+        return (
+            <div className='mt-4 mb-4' align="center">
+                <p>There are currently no applications</p>
+            </div>
+        )
+    }
+
     return (
         <div className='mt-4 mb-4' align="center">
             <Chart
