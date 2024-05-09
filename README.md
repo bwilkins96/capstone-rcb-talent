@@ -12,72 +12,75 @@
 
 ### Set Up
 
-* [x] Set up Maven project (BW) [hours to complete]
-* [x] Set up React project (BW) [hours to complete]
-* [x] Create production database schema (RS) [hours to complete]
-* [x] Create test database schema (RS) [hours to complete]
+* [x] Set up Maven project (BW) [1]
+* [x] Set up React project (BW) [1]
+* [x] Create production database schema (RS) [2]
+* [x] Create test database schema (RS) [2]
 
 ### Server
 
 #### Models
 
-* [x] Create Application Model (BW) [hours to complete]
-* [x] Create Interview Model (CA) [hours to complete]
-* [x] Create Job Posting Model (BW) [hours to complete]
-* [x] Create Company Model (BW) [hours to complete]
-* [x] Create Skill Model (BW) [hours to complete]
-* [x] Create Status Enum (BW) [hours to complete]
-* [x] Create Origin Enum (BW) [hours to complete]
-* [x] Create Result Enum (BW/CA) [hours to complete]
-* [x] Create Interview Type Enum (BW/CA) [hours to complete]
+* [x] Create Application Model (BW) [1]
+* [x] Create Interview Model (CA) [1]
+* [x] Create Job Posting Model (BW) [1]
+* [x] Create Company Model (BW) [1]
+* [x] Create Skill Model (BW) [1]
+* [x] Create Status Enum (BW) [1]
+* [x] Create Origin Enum (BW) [1]
+* [x] Create Result Enum (BW/CA) [1]
+* [x] Create Interview Type Enum (BW/CA) [1]
 
 #### Repository Layer
 
-* [x] Create Application repository interface (BW) [hours to complete]
-* [x] Create Interview repository interface (CA) [hours to complete]
-* [x] Create Company repository interface (BW) [hours to complete]
-* [x] Create Job Posting repository interface (BW) [hours to complete]
+* [x] Create Application repository interface (BW) [1]
+* [x] Create Interview repository interface (CA) [1]
+* [x] Create Company repository interface (BW) [1]
+* [x] Create Job Posting repository interface (BW) [1]
 
 
-* [x] Create Application repository class (BW) [hours to complete]
-* [ ] Test Application repository class (developer) [hours to complete]
-* [x] Create/test Interview repository class (CA) [hours to complete]
-* [x] Create/test Company repository class (BW) [hours to complete]
-* [x] Create/test Job Posting repository class (BW) [hours to complete]
+* [x] Create Application repository class (BW) [3]
+* [x] Test Application repository class (BW) [2]
+* [x] Create Interview repository class (CA) [3]
+* [x] Test Interview repository class (CA) [2]
+* [x] Create/test Company repository class (BW) [2]
+* [x] Create/test Job Posting repository class (BW) [2]
 
 #### Service Layer
 
-* [x] Create Application service layer (BW) [hours to complete]
-* [ ] Test Application service layer (developer) [hours to complete]
-* [x] Create/test Interview service layer (CA) [hours to complete]
-* [x] Create/test Company service layer (BW) [hours to complete]
-* [x] Create/test Job Posting service layer (BW) [hours to complete]
+* [x] Create Application service layer (BW) [3]
+* [x] Test Application service layer (BW) [2]
+* [x] Create Interview service layer (CA) [3]
+* [x] Test Interview service layer (CA) [2]
+* [x] Create/test Company service layer (BW) [1]
+* [x] Create/test Job Posting service layer (BW) [1]
 
 #### Controller Layer
 
-* [x] Create Application controller (RS) [hours to complete]
-* [x] Create Interview controller (CA) [hours to complete]
-* [x] Create Company controller (BW) [hours to complete]
-* [x] Create Job Posting controller (BW) [hours to complete]
-* [x] Create Global Exception Handler (RS) [hours to complete]
+* [x] Create Application controller (RS) [2]
+* [x] Create Interview controller (CA) [2]
+* [x] Create Company controller (BW) [1]
+* [x] Create Job Posting controller (BW) [1]
+* [x] Create Global Exception Handler (RS) [2]
 
 #### Other
 
-* [ ] Configure Spring DI (developer) [hours to complete]
+* [X] Configure Spring DI (All) [2]
       
 ### Client
 
-* [ ] Set up routing in App.js (RS) [hours to complete]
-* [ ] Create navbar component (RS) [hours to complete]
-* [ ] Create home page (RS) [hours to complete]
-* [ ] Create visualizations page (RS) [hours to complete]
-* [ ] Create applications overview page (developer) [hours to complete]
-* [ ] Create applications/id page (developer) [hours to complete]
-* [ ] Create applications form (developer) [hours to complete]
-* [ ] Create interview form (developer) [hours to complete]
+* [ ] Set up routing in App.js (RS) [1]
+* [ ] Create navbar component (RS) [1]
+* [ ] Create home page (RS) [2]
+* [ ] Create visualizations page (RS) [4]
+* [ ] Create applications overview page (RS) [2]
+* [ ] Create applications/id page (developer) [2]
+* [ ] Create applications form (BW) [2]
+* [ ] Create interview form (CA) [2]
+* [ ] Create interview list (CA) [2]
 
 ### Additional
 
-* [ ] Create class diagram (developer) [hours to complete]
-* [ ] Create presentation (developer) [hours to complete]
-* [ ] Update database diagram (developer) [hours to complete]
+* [ ] Create class diagram (developer) [2]
+* [ ] Create presentation (All) [1]
+* [x] Update database diagram (BW) [1]
