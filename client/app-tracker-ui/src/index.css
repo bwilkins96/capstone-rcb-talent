@@ -74,6 +74,29 @@ nav > a:hover {
   color: rgb(162, 232, 255);
 }
 
+form {
+  padding: 10px;
+  border-radius: 15px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.greenToOrange {
+  background: linear-gradient(to right, #B2DF8A, #FDBF6F);
+}
+
+.greenToBlue {
+  background: linear-gradient(to right, #B2DF8A, #A6CEE3);
+}
+
+.blueToGreen {
+  background: linear-gradient(to right, #A6CEE3, #B2DF8A);
+}
+
+.blueToOrange {
+  background: linear-gradient(to right, #A6CEE3, #FDBF6F);
+}
+
 .btn {
   font-size: 1.3rem;
 }
