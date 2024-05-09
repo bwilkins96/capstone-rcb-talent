@@ -127,7 +127,8 @@ insert into skill(skill_name) values
 		(1, 1), 
         (1, 2),
         (1, 3),
-        (2, 1);
+        (2, 1),
+        (3, 1);
         
 	insert into status(status_name) values
 		('Pending'),
