@@ -165,7 +165,7 @@ function InterviewForm() {
                     <fieldset className='form-group'>
                         <label htmlFor='result'>Interview Result</label>
                         <select id='result' name='result' className='form-control' value={interview.result} onChange={handleChange}>
-                            <option value={'UNDETERMINED'}>Undetermiend</option>
+                            <option value={'UNDETERMINED'}>Undetermined</option>
                             <option value={'PASS'}>Passed</option>
                             <option value={'FAIL'}>Failed</option>
                         </select>
