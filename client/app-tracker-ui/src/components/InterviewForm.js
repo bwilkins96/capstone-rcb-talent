@@ -131,7 +131,7 @@ function InterviewForm() {
 
     return (<>
         <main className='container'>
-            <h2 className='mb-4'>{id > 0 ? 'Update Interview' : 'Add Interview'}</h2>
+            <h2 className='mb-4 mt-2'>{id > 0 ? 'Update Interview' : 'Add Interview'}</h2>
                 {errors.length > 0 && (
                     // Display any errors in the entered form elements
                     <div className='alert alert-danger'>
@@ -165,7 +165,7 @@ function InterviewForm() {
                     <fieldset className='form-group'>
                         <label htmlFor='result'>Interview Result</label>
                         <select id='result' name='result' className='form-control' value={interview.result} onChange={handleChange}>
-                            <option value={'UNDETERMINED'}>Undetermiend</option>
+                            <option value={'UNDETERMINED'}>Undetermined</option>
                             <option value={'PASS'}>Passed</option>
                             <option value={'FAIL'}>Failed</option>
                         </select>

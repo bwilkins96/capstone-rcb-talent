@@ -46,10 +46,40 @@ header {
   color: white;
 }
 
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  color: white;
+  margin-top: 15px;
+}
+
+footer p {
+  margin-top: 5px;
+}
+
 nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 10px 0;
+}
+
+nav > a {
+  color: white;
+}
+
+nav > a:hover {
+  color: rgb(162, 232, 255);
+}
+
+.btn {
+  font-size: 1.3rem;
+}
+
+.form-control {
+  font-size: 1.5rem;
 }
 
 .about {

@@ -21,8 +21,9 @@ function Home() {
         <section>
             <JobApplicationList />
         </section>
-        <footer>
-            Copyright 2024
+        <footer className="bg-dark">
+            <p>Copyright 2024</p>
+            <p>RCB Talent</p>
         </footer>
     </>);
 }
