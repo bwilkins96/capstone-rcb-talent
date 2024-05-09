@@ -28,7 +28,6 @@ function Visualization() {
     const [sankeyData, setSankeyData] = useState([]);
 
     const url = "http://localhost:8080/api/job/application";
-    const url2 = ""
 
     useEffect(() => {
         fetch(url)
