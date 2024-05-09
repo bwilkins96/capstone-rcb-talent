@@ -61,6 +61,7 @@ function JobApplicationList() {
                             <th>Origin</th>
                             <th>Date Applied</th>
                             <th>Notes</th>
+                            <th>More Details</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
@@ -72,6 +73,11 @@ function JobApplicationList() {
                                 <td>{jobApplication.origin}</td>
                                 <td>{jobApplication.dateApplied}</td>
                                 <td>{jobApplication.notes}</td>
+                                <td>
+                                    <div>
+                                        <Link to={`/applications/${jobApplication.applicationId}`}>Details</Link>
+                                    </div>
+                                </td>
                                 <td>
                                     <div className="float-right mr-2">
                                         <Link className='btn btn-primary btn-sm mr-2' to={`/applications/edit/${jobApplication.applicationId}`} > Edit</Link>
