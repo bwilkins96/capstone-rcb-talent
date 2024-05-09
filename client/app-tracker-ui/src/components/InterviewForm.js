@@ -179,6 +179,7 @@ function InterviewForm() {
                         className='form form-control'
                         value={interview.when}
                         onChange={handleChange}
+                        required
                         />
                     </fieldset>
                     <fieldset className='form-group'>
