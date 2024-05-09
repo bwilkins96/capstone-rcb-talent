@@ -112,7 +112,7 @@ function Visualization() {
     }
 
     return (
-        <div align="center">
+        <div className='mt-4 mb-4' align="center">
             <Chart
                 chartType="Sankey"
                 width="82%"
