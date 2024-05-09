@@ -238,7 +238,7 @@ function JobApplicationForm() {
 
                 <div>
                     <button className='btn btn-success me-2' type='submit'>{addOrEdit()}</button>
-                    <Link className='btn btn-warning' to={'/'}>Cancel</Link>
+                    <Link className='btn btn-warning' to={'/applications'}>Cancel</Link>
                 </div>
         </form>
 

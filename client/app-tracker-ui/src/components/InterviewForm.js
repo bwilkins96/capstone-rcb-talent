@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useNavigate, useLocation, useParams} from 'react-router-dom';
 
 const interviewDefault = {
     applicationId: 0,
@@ -9,15 +9,20 @@ const interviewDefault = {
     notes: ""
 }
 
-function InterviewForm({ applicationId }) {
+function InterviewForm() {
     const [interview, setInterview] = useState(interviewDefault);
     const [errors, setErrors] = useState([]);
 
     const url = "http://localhost:8080/api/interview";
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { id } = useParams();
+    let appId = 0;
+    if (location.state) {
+        appId = location.state.applicationId;
+    }
 
     useEffect(() => {
         // check if we have an id variable (if so we use it to get the interview with that id)
@@ -34,8 +39,17 @@ function InterviewForm({ applicationId }) {
                 setInterview(data);
             })
             .catch(console.log);
+        } else {
+            updateInterviewAppId();
         }
     }, [id]);
+
+    const updateInterviewAppId = () => {
+        // use the application ID from the passed in state to become the default
+        const newInterview = {...interview};
+        newInterview['applicationId'] = appId;
+        setInterview(newInterview);
+    }
 
     const handleChange = (event) => {
         const newInterview = {...interview};
@@ -107,8 +121,7 @@ function InterviewForm({ applicationId }) {
         .then(data => {
             // add was successful as we have a positive ID -> go to the previous page (application deatails) where we added the interview
             if (data.interviewId) {
-                // navigate(`/applications/${applicationId}`);
-                navigate(-1);
+                navigate(`/applications/${interview.applicationId}`);
             } else {
                 setErrors(data);
             }
@@ -131,7 +144,7 @@ function InterviewForm({ applicationId }) {
                     </div>
                 )}
                 <form onSubmit={handleSubmit}>
-                    <fieldset className='form-group'>
+                    {/* <fieldset className='form-group'>
                         <label htmlFor='applicationId'>Application ID</label>
                         <input
                         id='applicationId'
@@ -141,7 +154,7 @@ function InterviewForm({ applicationId }) {
                         value={interview.applicationId}
                         onChange={handleChange}
                         />
-                    </fieldset>
+                    </fieldset> */}
                     <fieldset className='form-group'>
                         <label htmlFor='type'>Interview Type</label>
                         <select id='type' name='type' className='form-control' value={interview.type} onChange={handleChange}>
@@ -180,8 +193,7 @@ function InterviewForm({ applicationId }) {
                     </fieldset>
                     <div className='mt-4'>
                         <button className='btn btn-success btn-lg mr-2' type='submit'>{id > 0 ? 'Update Interview' : 'Add Interview'}</button>
-                        {/* <button className='btn btn-warning btn-lg' type='button' onClick={() => navigate(`/applications/${interview.applicationId}`)}>Cancel</button> */}
-                        <button className='btn btn-warning btn-lg' type='button' onClick={() => navigate(-1)}>Cancel</button>
+                        <button className='btn btn-warning btn-lg' type='button' onClick={() => navigate(`/applications/${interview.applicationId}`)}>Cancel</button>
                     </div>
                 </form>
         </main>
