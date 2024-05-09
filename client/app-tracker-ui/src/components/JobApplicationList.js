@@ -23,7 +23,7 @@ function JobApplicationList() {
         // first find the application
         const jobApplication = jobApplications.find(jobApplication => jobApplication.applicationId === applicationId);
         // confirm
-        if (window.confirm(`Delete Job Application: ${jobApplication.posting}?`)) {
+        if (window.confirm(`Delete Job Application: ${jobApplication.applicationId}?`)) {
             const init = {
                 method: "DELETE"
             };
@@ -67,7 +67,7 @@ function JobApplicationList() {
                     <tbody>
                         {jobApplications.map(jobApplication => (
                             <tr key={jobApplication.applicationId}>
-                                <td>{jobApplication.posting}</td>
+                                <td>{jobApplication.posting.postingId}</td>
                                 <td>{jobApplication.status}</td>
                                 <td>{jobApplication.origin}</td>
                                 <td>{jobApplication.dateApplied}</td>
