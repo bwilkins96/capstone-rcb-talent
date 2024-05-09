@@ -45,7 +45,7 @@ export function AboutText() {
             </p>
             <p>
                 <b>Benjamin Wilkins - </b> 
-                I started my coding journey by completing App Academny Open's coding bootcamp. 
+                I started my coding journey by completing App Academy Open's coding bootcamp. 
                 I then completed a Master's degree in Software Development 
                 at Maryville University of St. Louis. 
                 I enjoy swimming, movies, and spending time with my wife. 
