@@ -129,9 +129,13 @@ function InterviewForm() {
         .catch(console.log)
     }
 
+    const getGradientClass = () => {
+        return id ? 'blueToGreen' : 'blueToOrange';
+    }
+
     return (<>
         <main className='container'>
-            <h2 className='mb-4 mt-2'>{id > 0 ? 'Update Interview' : 'Add Interview'}</h2>
+            <h2 className='mb-4 mt-2 text-center'>{id > 0 ? 'Update Interview' : 'Add Interview'}</h2>
                 {errors.length > 0 && (
                     // Display any errors in the entered form elements
                     <div className='alert alert-danger'>
@@ -143,7 +147,7 @@ function InterviewForm() {
                         </ul>
                     </div>
                 )}
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className={getGradientClass()}>
                     {/* <fieldset className='form-group'>
                         <label htmlFor='applicationId'>Application ID</label>
                         <input

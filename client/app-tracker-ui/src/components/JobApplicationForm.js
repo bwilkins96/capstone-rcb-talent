@@ -86,6 +86,10 @@ function JobApplicationForm() {
         return id ? 'Edit Application' : 'Add Application';
     }
 
+    const getGradientClass = () => {
+        return id ? 'greenToBlue' : 'greenToOrange';
+    }
+
     // event handlers
 
     const handleAdd = () => {
@@ -160,7 +164,7 @@ function JobApplicationForm() {
     return (
     <main className='container'>
 
-        <h2 className='mb-4 mt-2'>{addOrEdit()}</h2>
+        <h2 className='mb-4 mt-2 text-center'>{addOrEdit()}</h2>
 
         {(errors.length > 0) && (
                 <div className='alert alert-danger mb-2 max600'>
@@ -171,7 +175,7 @@ function JobApplicationForm() {
                 </div>
         )}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={getGradientClass()}>
                 <fieldset className='mb-4'>
                     <label htmlFor='status' className='form-label'>Status</label>
 
