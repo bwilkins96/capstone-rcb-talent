@@ -1,0 +1,46 @@
+@url = http://localhost:8080/api/interview
+
+GET {{url}} HTTP/1.1
+
+###
+
+GET {{url}}/1 HTTP/1.1
+
+###
+
+GET {{url}}/appId/1 HTTP/1.1
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "applicationId": 1,
+  "type": "TECHNICAL",
+  "result": "UNDETERMINED",
+  "when": "2024-03-14T12:30:00",
+  "notes": ""
+}
+
+###
+
+PUT {{url}}/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "interviewId": 1,
+  "applicationId": 1,
+  "type": "BEHAVIORAL",
+  "result": "PASS",
+  "when": "2024-03-14T01:30:00",
+  "notes": ""
+}
+
+###
+
+DELETE {{url}}/3 HTTP/1.1
+
+###
+
+DELETE {{url}}/100 HTTP/1.1

@@ -1,0 +1,147 @@
+@url = http://localhost:8080/api/job/application
+
+GET {{url}} HTTP/1.1
+
+###
+
+GET {{url}}/1 HTTP/1.1
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 0,
+    "posting": {
+        "postingId": 1
+    },
+    "status": "PENDING",
+    "origin": "COLD_APPLY",
+    "dateApplied": "2024-04-04",
+    "notes": "This should be added!"
+}
+
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 0,
+    "posting": {
+        "postingId": 1
+    },
+    "status": null,
+    "origin": null,
+    "dateApplied": null,
+    "notes": "This should be rejected!"
+}
+
+###
+
+PUT {{url}}/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 2,
+    "posting": {
+        "postingId": 1
+    },
+    "status": "OFFER",
+    "origin": "REFERRAL",
+    "dateApplied": "2024-04-05",
+    "notes": "This should be updated!"
+}
+
+###
+
+PUT {{url}}/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 99,
+    "posting": {
+        "postingId": 1
+    },
+    "status": "OFFER",
+    "origin": "REFERRAL",
+    "dateApplied": "2024-04-05",
+    "notes": "The ids don't match!"
+}
+
+###
+
+DELETE {{url}}/2 HTTP/1.1
+
+###
+
+DELETE {{url}}/99 HTTP/1.1
+
+### Extra Post Requests
+
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 0,
+    "posting": {
+        "postingId": 2
+    },
+    "status": "PENDING",
+    "origin": "CAREER_FAIR",
+    "dateApplied": "2024-04-04",
+    "notes": "another application"
+}
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 0,
+    "posting": {
+        "postingId": 2
+    },
+    "status": "WITHDRAWN",
+    "origin": "REFERRAL",
+    "dateApplied": "2024-05-02",
+    "notes": ""
+}
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 0,
+    "posting": {
+        "postingId": 2
+    },
+    "status": "WITHDRAWN",
+    "origin": "REFERRAL",
+    "dateApplied": "2024-05-02",
+    "notes": ""
+}
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "applicationId": 0,
+    "posting": {
+        "postingId": 2
+    },
+    "status": "WITHDRAWN",
+    "origin": "REFERRAL",
+    "dateApplied": "2024-05-02",
+    "notes": ""
+}
+
+###
